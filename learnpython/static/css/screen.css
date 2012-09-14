@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fafafa;
+    background-image: url("../img/body.jpg");
+    border-top: 20px solid #66778c;
+    color: #424d5b;
+}
+
+body, input, select, table, td, textarea, th {
+    font-family: "Gill Sans", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 22px;
+}
+
+a {
+    color: #5f272d;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 960px;
+}
+
+header {
+    margin: 20px 0;
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header div.left-wrapper, header div.right-wrapper {
+    font-size: 16px;
+    height: 180px;
+    width: 330px;
+}
+
+header div.left-wrapper {
+    float: left;
+    text-align: right;
+}
+
+header div.right-wrapper {
+    float: right;
+}
+
+header div.clear {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+
+header h1, header h3 {
+    color: #66778c;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+header a.active, footer a.active {
+    font-weight: normal;
+}
+
+nav {
+    background-image: url("../img/pattern-small.png");
+    font-size: 22px;
+    font-weight: normal;
+    height: 80px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    float: left;
+    width: 240px;
+}
+
+nav ul li a {
+    background-color: #fff;
+    color: #252c34;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px 10px;
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    background-color: #fafafa;
+    color: #101316;
+}
+
+nav ul li:first-child a {
+    margin-left: 20px;
+}
+
+nav ul li:last-child a {
+    margin-right: 20px;
+}
+
+#subscribe-link {
+    background-color: #424d5b;
+    color: #fafafa;
+}
+
+#subscribe-link.active, #subscribe-link:hover {
+    background-color: #252c34;
+    color: #fff;
+}
+
+article {
+    background-color: #fff;
+    border-bottom: 1px solid #c6cdd6;
+    clear: both;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+article dl, article ol, article p, article pre, article ul {
+    margin: 1em 0;
+}
+
+article dl:first-child, article ol:first-child, article p:first-child,
+article pre:first-child, article ul:first-child {
+    margin-top: 0;
+}
+
+article dl:last-child, article ol:last-child, article p:last-child,
+article pre:last-child, article ul:last-child {
+    margin-bottom: 0;
+}
+
+article ol, article ul {
+    margin-left: 2em;
+}
+
+article .tabs .tab {
+    display: none;
+}
+
+article .tabs .tab.active {
+    display: block;
+}
+
+footer {
+    font-size: 14px;
+    line-height: 19px;
+    margin: 20px 0;
+}

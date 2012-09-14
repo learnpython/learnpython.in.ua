@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Learn Python in Kyiv, Ukraine</title>
+  <meta charset="utf-8">
+
+  <link href="{{ url_for("static", filename="css/screen.css") }}" media="screen,projection,tv" rel="stylesheet" type="text/css">
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <header>
+      <div class="left-wrapper">
+        <h1>Учим Python в Киеве</h1>
+        <p>
+          <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">О нас</a> -
+          <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">Контакты</a>
+        </p>
+      </div>
+      <div class="right-wrapper">
+        <h3>3 потока по 12 занятий</h3>
+      </div>
+      <div class="clear"></div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a id="medium-link" href="{{ url_for("index", _anchor="medium") }}">Medium поток</a></li>
+        <li><a id="normal-link" href="{{ url_for("index", _anchor="normal") }}">Normal поток</a></li>
+        <li><a id="advanced-link" href="{{ url_for("index", _anchor="advanced") }}">Advanced поток</a></li>
+        <li><a{% if is_subscribe %} class="active"{% endif %} id="subscribe-link" href="{{ url_for("subscribe") }}">Запись на курс &rarr;</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      {% block content %}{% endblock %}
+    </article>
+
+    <footer>
+      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("index") }}">Learn Python</a><br>
+      <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">О нас</a> &middot;
+      <a{% if is_subscribe %} class="active"{% endif %} href="{{ url_for("subscribe") }}">Запись</a> &middot;
+      <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">Контакты</a>
+    </footer>
+  </div>
+
+  {% block extra_body %}{% endblock %}
+
+</body>
+
+</html>

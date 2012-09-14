@@ -1,0 +1,7 @@
+docutils==0.9.1
+Flask==0.9
+Flask-Babel==0.8
+Flask-FlatPages==0.3
+Flask-LazyViews==0.1
+Flask-Script==0.4.0
+ordereddict==1.1
