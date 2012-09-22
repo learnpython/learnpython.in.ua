@@ -11,10 +11,10 @@ body {
 }
 
 body, input, select, table, td, textarea, th {
-    font-family: "Gill Sans", "Arial", sans-serif;
+    font-family: "Gill Sans", "Arial Narrow", "Arial", sans-serif;
     font-size: 18px;
     font-weight: 100;
-    line-height: 22px;
+    line-height: 23px;
 }
 
 a {
@@ -40,7 +40,7 @@ header {
 
 header div.left-wrapper, header div.right-wrapper {
     font-size: 16px;
-    height: 180px;
+    height: 190px;
     width: 330px;
 }
 
@@ -67,7 +67,7 @@ header h1, header h3 {
 }
 
 header a.active, footer a.active {
-    font-weight: normal;
+    font-weight: bold;
 }
 
 nav {
@@ -102,6 +102,10 @@ nav ul li a.active, nav ul li a:hover {
     color: #101316;
 }
 
+nav ul li a.active {
+    text-decoration: underline;
+}
+
 nav ul li:first-child a {
     margin-left: 20px;
 }
@@ -110,12 +114,12 @@ nav ul li:last-child a {
     margin-right: 20px;
 }
 
-#subscribe-link {
+nav a.subscribe {
     background-color: #424d5b;
     color: #fafafa;
 }
 
-#subscribe-link.active, #subscribe-link:hover {
+nav a.subscribe.active, nav a.subscribe:hover {
     background-color: #252c34;
     color: #fff;
 }
@@ -125,7 +129,7 @@ article {
     border-bottom: 1px solid #c6cdd6;
     clear: both;
     margin: 20px 0;
-    padding: 20px;
+    padding: 40px;
 }
 
 article dl, article ol, article p, article pre, article ul {
@@ -142,6 +146,21 @@ article pre:last-child, article ul:last-child {
     margin-bottom: 0;
 }
 
+article h1, article h2, article h3 {
+    font-weight: normal;
+}
+
+article hr {
+    background-color: #c6cdd6;
+    border: 0;
+    height: 1px;
+    margin: 1em 0;
+}
+
+article li p {
+    margin: 0;
+}
+
 article ol, article ul {
     margin-left: 2em;
 }
@@ -154,8 +173,115 @@ article .tabs .tab.active {
     display: block;
 }
 
+form input[type="text"] {
+    border: 0;
+    border-bottom: 1px solid #c6cdd6;
+    padding: 3px 6px;
+}
+
+form input[type="text"], form textarea {
+    background-color: #fafafa;
+}
+
+form input[type="text"].required {
+    border-bottom-color: #9eaaba;
+}
+
+form textarea {
+    border: 1px solid #c6cdd6;
+    padding: 3px 6px;
+}
+
+form textarea.required {
+    border-color: #9eaaba;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    background-color: #fff !important;
+    border-color: #65778d !important;
+}
+
+form .buttons input {
+    background-color: #fafafa;
+    border: 1px solid #9eaaba;
+    font-weight: normal;
+    padding: 4px 20px;
+}
+
+form .buttons input:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+form .error {
+    color: #c00;
+}
+
+form .error-line, form p.error-line {
+    margin: -0.5em 0;
+}
+
+form .error-line #name-error, form .error-line #email-error {
+    display: inline-block;
+    width: 437px;
+}
+
+form .error-line.three-in-a-row #name-error,
+form .error-line.three-in-a-row #email-error,
+form .error-line #phone-error {
+    width: 288px;
+}
+
+form #name, form #email {
+    width: 425px;
+}
+
+form #topic {
+    width: 868px;
+}
+
+form #message, form #comments {
+    width: 866px;
+}
+
+form .three-in-a-row #name, form .three-in-a-row #phone {
+    width: 277px;
+}
+
+form .three-in-a-row #email {
+    width: 279px;
+}
+
+form .flow-wrapper label {
+    padding-left: 6px;
+    color: #999;
+}
+
+form .flow-wrapper select {
+    background-color: #fafafa;
+    border: 1px solid #9eaaba;
+    padding: 2px 5px;
+    width: 300px;
+}
+
 footer {
     font-size: 14px;
     line-height: 19px;
     margin: 20px 0;
+}
+
+.tabs .tab {
+    display: none;
+}
+
+.tabs .tab.active {
+    display: block;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder {
+    color: #999;
 }

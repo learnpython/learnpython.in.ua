@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block extra_head %}
+  <meta http-equiv="Refresh" content="10; {{ next }}">
+{% endblock %}
+{% block content %}
+  {% for category, message in get_flashed_messages(with_categories=True) %}
+    <p class="{{ category }}">{{ message }}</p>
+  {% endfor %}
+  <p><small>
+    {{ _("You will redirect to next page in 10 seconds.") }}<br>
+    <a href="{{ next }}">{{ _("Click here, if you don't wanna wait.") }}</a>
+  </small></p>
+{% endblock %}

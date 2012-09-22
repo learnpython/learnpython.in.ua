@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Learn Python in Kyiv, Ukraine</title>
+  <title>{{ _("Learn Python in Kyiv, Ukraine") }}</title>
   <meta charset="utf-8">
 
   <link href="{{ url_for("static", filename="css/screen.css") }}" media="screen,projection,tv" rel="stylesheet" type="text/css">
@@ -14,24 +14,27 @@
   <div id="wrapper">
     <header>
       <div class="left-wrapper">
-        <h1>Учим Python в Киеве</h1>
+        <h1>
+          {% if not is_index %}<a href="{{ url_for("page", name="index") }}">{% endif %}{{ _("Learn Python in Kyiv, Ukraine") }}
+          {% if not is_index %}</a>{% endif %}
+        </h1>
         <p>
-          <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">О нас</a> -
-          <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">Контакты</a>
+          <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">{{ _("About us") }}</a> -
+          <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">{{ _("Contacts") }}</a>
         </p>
       </div>
       <div class="right-wrapper">
-        <h3>3 потока по 12 занятий</h3>
+        <h3>{{ _("3 flows on 12 studies") }}</h3>
       </div>
       <div class="clear"></div>
     </header>
 
     <nav>
       <ul>
-        <li><a id="medium-link" href="{{ url_for("index", _anchor="medium") }}">Medium поток</a></li>
-        <li><a id="normal-link" href="{{ url_for("index", _anchor="normal") }}">Normal поток</a></li>
-        <li><a id="advanced-link" href="{{ url_for("index", _anchor="advanced") }}">Advanced поток</a></li>
-        <li><a{% if is_subscribe %} class="active"{% endif %} id="subscribe-link" href="{{ url_for("subscribe") }}">Запись на курс &rarr;</a></li>
+        <li><a id="medium-link-nav" href="{{ url_for("flows", _anchor="medium") }}">{{ _("Medium flow") }}</a></li>
+        <li><a id="normal-link-nav" href="{{ url_for("flows", _anchor="normal") }}">{{ _("Normal flow") }}</a></li>
+        <li><a id="advanced-link-nav" href="{{ url_for("flows", _anchor="advanced") }}">{{ _("Advanced flow") }}</a></li>
+        <li><a class="{% if is_subscribe %}active {% endif %}subscribe" href="{{ url_for("subscribe") }}">{{ _("Subscribe") }} &rarr;</a></li>
       </ul>
     </nav>
 
@@ -40,10 +43,15 @@
     </article>
 
     <footer>
-      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("index") }}">Learn Python</a><br>
-      <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">О нас</a> &middot;
-      <a{% if is_subscribe %} class="active"{% endif %} href="{{ url_for("subscribe") }}">Запись</a> &middot;
-      <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">Контакты</a>
+      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("page", name="index") }}">Learn Python</a><br>
+
+      <a id="medium-link-footer" href="{{ url_for("flows", _anchor="medium") }}">{{ _("Medium flow") }}</a> &middot;
+      <a id="normal-link-footer" href="{{ url_for("flows", _anchor="normal") }}">{{ _("Normal flow") }}</a> &middot;
+      <a id="advanced-link-footer" href="{{ url_for("flows", _anchor="advanced") }}">{{ _("Advanced flow") }}</a><br>
+
+      <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">{{ _("About us") }}</a> &middot;
+      <a{% if is_subscribe %} class="active"{% endif %} href="{{ url_for("subscribe") }}">{{ _("Subscribe") }}</a> &middot;
+      <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">{{ _("Contacts") }}</a>
     </footer>
   </div>
 

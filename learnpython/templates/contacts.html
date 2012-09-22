@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ page.title }}</h2>
+  {{ page.html }}
+  <hr>
+  <form action="" method="post">
+    {{ form.csrf_token }}
+    {% if form.errors %}
+      <p class="error">{{ _("Cannot submit form! Please, fix errors below:") }}</p>
+    {% endif %}
+    {% if is_contacts %}
+      <p>
+        {{ form.name(class_="required", placeholder="* " + form.name.label.text, size=40) }}
+        {{ form.email(class_="required", placeholder="* " + form.email.label.text, size=40) }}
+      </p>
+      {% if form.name.errors or form.email.errors %}
+      <p class="error error-line">
+        <span id="name-error">{% if form.name.errors %}{{ form.name.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+        <span id="email-error">{% if form.email.errors %}{{ form.email.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+      </p>
+      {% endif %}
+      <p>
+        {{ form.subject(placeholder=form.subject.label.text, size=80) }}
+      </p>
+      {% if form.subject.errors %}
+      <p class="error error-line">
+        <span id="subject-error">{{ form.subject.errors|join("<br>") }}</span>
+      </p>
+      {% endif %}
+      <p>
+        {{ form.message(class_="required", placeholder="* " + form.message.label.text, cols=80, rows=10) }}
+      </p>
+      {% if form.message.errors %}
+      <p class="error error-line">
+        <span id="message-error">{{ form.message.errors|join("<br>") }}</span>
+      </p>
+      {% endif %}
+    {% elif is_subscribe %}
+      <p class="three-in-a-row">
+        {{ form.name(class_="required", placeholder="* " + form.name.label.text, size=27) }}
+        {{ form.email(class_="required", placeholder="* " + form.email.label.text, size=27) }}
+        {{ form.phone(placeholder=form.phone.label.text, size=27) }}
+      </p>
+      {% if form.name.errors or form.email.errors or form.phone.errors %}
+      <p class="error error-line three-in-a-row">
+        <span id="name-error">{% if form.name.errors %}{{ form.name.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+        <span id="email-error">{% if form.email.errors %}{{ form.email.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+        <span id="phone-error">{% if form.phone.errors %}{{ form.phone.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+      </p>
+      {% endif %}
+      <p class="flow-wrapper">
+        <label for="{{ form.flow.id }}">* {{ form.flow.label.text }}</label>
+        {{ form.flow }}
+      </p>
+      {% if form.flow.errors %}
+      <p class="error error-line">
+        <span id="flow-error">{{ form.flow.errors|join("<br>") }}</span>
+      </p>
+      {% endif %}
+      <p>
+        {{ form.comments(placeholder=form.comments.label.text, cols=80, rows=4) }}
+      </p>
+      {% if form.comments.errors %}
+      <p class="error error-line">
+        <span id="comments-error">{{ form.comments.errors|join("<br>") }}</span>
+      </p>
+      {% endif %}
+    {% else %}
+      {% for field in form if field.id != "csrf_token" %}
+        <p>{{ field.label }}<br>{{ field }}</p>
+        {% if field.errors %}
+        <p class="error error-line"><span id="{{ field.id }}-error">{{ field.errors|join("<br>") }}</span></p>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <p class="buttons">
+      <input type="submit" value="{{ _("Submit") }}">
+    </p>
+  </form>
+  <script type="text/javascript"><!--
+    var elem = document.getElementById("name");
+    (elem) ? elem.focus() : null;
+  --></script>
+{% endblock %}
