@@ -76,7 +76,7 @@ test_splinter: clean
 	sleep 2
 
 test_unit: clean
-	$(ENV)/bin/nosetests $(NOSE_ARGS) -e test_selenium.py -v -w $(PROJECT)/
+	$(ENV)/bin/nosetests $(NOSE_ARGS) -e "test_(selenium|splinter|windmill).py" -v -w $(PROJECT)/
 
 test_windmill: clean
 	HOST=$(WINDMILL_HOST) PORT=$(WINDMILL_PORT) $(MAKE) server &
