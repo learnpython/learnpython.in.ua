@@ -47,4 +47,6 @@ To run all tests, execute::
 But, you should customize running tests by specifying one of next targets,
 
 :test_selenium: Prepare and run selenium tests
+:test_splinter: Run splinter tests
 :test_unit: Run only unit tests
+:test_windmill: Try to run little windmill tests, could be freezed on teardown
