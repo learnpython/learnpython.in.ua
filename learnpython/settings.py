@@ -16,6 +16,17 @@ FLATPAGES_EXTENSION = '.yml'
 FLATPAGES_HTML_RENDERER = 'learnpython.utils:restructuredtext_filter'
 FLATPAGES_ROOT = rel('data')
 
+# Mail settings
+DEFAULT_MAIL_SENDER = 'please, set proper value in ``settings_local`` module'
+MAIL_FAIL_SILENTLY = False
+MAIL_SERVER = 'localhost'
+MAIL_PORT = 25
+MAIL_USERNAME = 'please, set proper value in ``settings_local`` module'
+MAIL_PASSWORD = 'please, set proper value in ``settings_local`` module'
+
+# WTForms settings
+SECRET_KEY = 'Z\xc7G\xaf\x15$\xc1O\x8d\xb0Bks\x9b\n\x9a'
+
 
 # Import local settings if any
 try:
