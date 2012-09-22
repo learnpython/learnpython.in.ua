@@ -1,0 +1,6 @@
+# Mail settings
+DEFAULT_MAIL_SENDER = ''
+MAIL_SERVER = 'localhost'
+MAIL_PORT = 25
+MAIL_USERNAME = ''
+MAIL_PASSWORD = ''
