@@ -70,6 +70,13 @@ header a.active, footer a.active {
     font-weight: bold;
 }
 
+header a.github-ribbon {
+    border: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 nav {
     background-image: url("../img/pattern-small.png");
     font-size: 22px;
