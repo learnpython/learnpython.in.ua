@@ -16,6 +16,24 @@ FLOW_CHOICES = \
                key=lambda item: item[1]['order']))
 
 
+class Email(wtf.Email):
+    """
+    Localize message for email validator.
+    """
+    def __init__(self, message=None):
+        message = message or _('Invalid email address.')
+        super(Email, self).__init__(message)
+
+
+class Required(wtf.Required):
+    """
+    Localize message for required validator.
+    """
+    def __init__(self, message=None):
+        message = message or _('This field is required.')
+        super(Required, self).__init__(message)
+
+
 class BaseContactsForm(wtf.Form):
     """
     Base contacts form.
@@ -23,8 +41,8 @@ class BaseContactsForm(wtf.Form):
     Provide common fields, config settings and method to send email after
     succeed form validation.
     """
-    name = wtf.TextField(_('Name'), validators=[wtf.Required()])
-    email = wtf.TextField(_('Email'), validators=[wtf.Required(), wtf.Email()])
+    name = wtf.TextField(_('Name'), validators=[Required()])
+    email = wtf.TextField(_('Email'), validators=[Required(), Email()])
 
     recipients = ['learnpython@igordavydenko.com']
     template = None
@@ -47,7 +65,7 @@ class ContactsForm(BaseContactsForm):
     Feedback form.
     """
     subject = wtf.TextField(_('Subject'))
-    message = wtf.TextField(_('Message'), validators=[wtf.Required()],
+    message = wtf.TextField(_('Message'), validators=[Required()],
         widget=wtf.TextArea())
 
     template = 'mails/contacts.txt'
@@ -64,7 +82,7 @@ class SubscribeForm(BaseContactsForm):
     """
     phone = wtf.TextField(_('Phone'))
     flow = wtf.SelectField(_('Flow'), choices=FLOW_CHOICES,
-        validators=[wtf.Required()])
+        validators=[Required()])
     comments = wtf.TextField(_('Additional comments'), widget=wtf.TextArea())
 
     template = 'mails/subscribe.txt'
