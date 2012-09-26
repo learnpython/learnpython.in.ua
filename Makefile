@@ -1,7 +1,8 @@
-.PHONY: bootstrap clean distclean manage selenium-server server shell test test_selenium test_splinter test_unit test_windmill
+.PHONY: bootstrap clean distclean killselenium killserver manage selenium server shell test test_selenium test_splinter test_unit test_windmill
 
 ENV ?= env
 PROJECT = learnpython
+TRANSLATIONS_DIR = $(PROJECT)/translations
 
 PYTHON = $(ENV)/bin/python
 MANAGE = $(PYTHON) $(PROJECT)/manage.py
@@ -32,6 +33,9 @@ bootstrap:
 clean:
 	find . -name '*.pyc' -delete
 
+compilemessages:
+	$(ENV)/bin/pybabel compile -f -d $(TRANSLATIONS_DIR)
+
 deploy:
 	$(ENV)/bin/fab deploy:$(TARGET)
 
@@ -39,10 +43,23 @@ distclean: clean
 	rm -rf $(ENV)/
 	rm $(PROJECT)/settings_local.py
 
+killselenium:
+	kill `ps -o "pid,command" | grep "java -jar $(SELENIUM_JAR)" | grep -v grep | awk '{print $$1}'`
+
+killserver:
+	kill `ps -o "pid,command" | grep "python $(PROJECT)/manage.py runserver -t $(HOST) -p $(PORT)" | grep -v grep | awk '{print $$1}'`
+
 manage:
 	$(MANAGE) $(COMMAND)
 
-selenium-server:
+messages:
+	[ ! -d $(TRANSLATIONS_DIR) ] && mkdir $(TRANSLATIONS_DIR) || :
+	$(ENV)/bin/pybabel extract -F babel.cfg -k lazy_gettext -o $(TRANSLATIONS_DIR)/messages.pot --project=$(PROJECT) .
+	[ ! -d $(TRANSLATIONS_DIR)/ru ] && \
+	$(ENV)/bin/pybabel init -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru || \
+	$(ENV)/bin/pybabel update -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru
+
+selenium:
 	java -jar $(SELENIUM_JAR)
 
 server:
@@ -54,16 +71,12 @@ shell:
 test: test_selenium test_splinter test_unit
 
 test_selenium: clean
-	$(MAKE) selenium-server &
-	sleep 10
-
 	HOST=$(SELENIUM_HOST) PORT=$(SELENIUM_PORT) $(MAKE) server &
 	sleep 2
 
 	-SELENIUM_BROWSER=$(SELENIUM_BROWSER) SELENIUM_URL=$(SELENIUM_URL) $(ENV)/bin/nosetests $(NOSE_ARGS) -v $(PROJECT)/tests/test_selenium.py
 
-	-kill `ps -o "pid,command" | grep "python $(PROJECT)/manage.py runserver -t $(SELENIUM_HOST) -p $(SELENIUM_PORT)" | grep -v grep | awk '{print $$1}'`
-	-kill `ps -o "pid,command" | grep "java -jar $(SELENIUM_JAR)" | grep -v grep | awk '{print $$1}'`
+	-HOST=$(SELENIUM_HOST) PORT=$(SELENIUM_PORT) $(MAKE) killserver
 	sleep 2
 
 test_splinter: clean
@@ -72,7 +85,7 @@ test_splinter: clean
 
 	-SPLINTER_BROWSER=$(SPLINTER_BROWSER) SPLINTER_URL=$(SPLINTER_URL) $(ENV)/bin/nosetests $(NOSE_ARGS) -v $(PROJECT)/tests/test_splinter.py
 
-	-kill `ps -o "pid,command" | grep "python $(PROJECT)/manage.py runserver -t $(SPLINTER_HOST) -p $(SPLINTER_PORT)" | grep -v grep | awk '{print $$1}'`
+	-HOST=$(SPLINTER_HOST) PORT=$(SPLINTER_PORT) $(MAKE) killserver
 	sleep 2
 
 test_unit: clean
@@ -84,5 +97,5 @@ test_windmill: clean
 
 	-$(ENV)/bin/nosetests $(NOSE_ARGS) -v --wmbrowser=$(WINDMILL_BROWSER) --wmtesturl=$(WINDMILL_URL) $(PROJECT)/tests/test_windmill.py
 
-	-kill `ps -o "pid,command" | grep "python $(PROJECT)/manage.py runserver -t $(WINDMILL_HOST) -p $(WINDMILL_PORT)" | grep -v grep | awk '{print $$1}'`
+	-HOST=$(WINDMILL_HOST) PORT=$(WINDMILL_PORT) $(MAKE) killserver
 	sleep 2

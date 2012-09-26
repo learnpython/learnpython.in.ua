@@ -1,0 +1,129 @@
+# Translations template for learnpython.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the learnpython
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: learnpython VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-09-26 12:54+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: learnpython/forms.py:23
+msgid "Invalid email address."
+msgstr ""
+
+#: learnpython/forms.py:30
+msgid "This field is required."
+msgstr ""
+
+#: learnpython/forms.py:40
+msgid "Name"
+msgstr ""
+
+#: learnpython/forms.py:41
+msgid "Email"
+msgstr ""
+
+#: learnpython/forms.py:63
+msgid "Subject"
+msgstr ""
+
+#: learnpython/forms.py:64
+msgid "Message"
+msgstr ""
+
+#: learnpython/forms.py:68
+msgid "Feedback"
+msgstr ""
+
+#: learnpython/forms.py:79
+msgid "Phone"
+msgstr ""
+
+#: learnpython/forms.py:80
+msgid "Flow"
+msgstr ""
+
+#: learnpython/forms.py:82
+msgid "Additional comments"
+msgstr ""
+
+#: learnpython/forms.py:85 learnpython/templates/base.html:37
+#: learnpython/templates/base.html:53
+msgid "Subscribe"
+msgstr ""
+
+#: learnpython/views.py:14
+msgid "Cannot send message due to mail server problems. Please, try again later!"
+msgstr ""
+
+#: learnpython/views.py:16
+msgid "Your message has been sent! Thanks for your feedback!"
+msgstr ""
+
+#: learnpython/views.py:20
+msgid ""
+"Cannot apply subscription due to mail server problems. Please, try again "
+"later!"
+msgstr ""
+
+#: learnpython/views.py:22
+msgid ""
+"You successfully subscribed to Learn Python courses! We will send you all"
+" necessary information later!"
+msgstr ""
+
+#: learnpython/templates/base.html:4 learnpython/templates/base.html:18
+msgid "Learn Python in Kyiv, Ukraine"
+msgstr ""
+
+#: learnpython/templates/base.html:22 learnpython/templates/base.html:52
+msgid "About us"
+msgstr ""
+
+#: learnpython/templates/base.html:23 learnpython/templates/base.html:54
+msgid "Contacts"
+msgstr ""
+
+#: learnpython/templates/base.html:27
+msgid "3 flows on 12 studies"
+msgstr ""
+
+#: learnpython/templates/base.html:34 learnpython/templates/base.html:48
+msgid "Medium flow"
+msgstr ""
+
+#: learnpython/templates/base.html:35 learnpython/templates/base.html:49
+msgid "Normal flow"
+msgstr ""
+
+#: learnpython/templates/base.html:36 learnpython/templates/base.html:50
+msgid "Advanced flow"
+msgstr ""
+
+#: learnpython/templates/contacts.html:9
+msgid "Cannot submit form! Please, fix errors below:"
+msgstr ""
+
+#: learnpython/templates/contacts.html:77
+msgid "Submit"
+msgstr ""
+
+#: learnpython/templates/status.html:10
+msgid "You will redirect to next page in 10 seconds."
+msgstr ""
+
+#: learnpython/templates/status.html:11
+msgid "Click here, if you don't wanna wait."
+msgstr ""
+
