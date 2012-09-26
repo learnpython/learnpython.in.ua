@@ -8,14 +8,17 @@ from flask.ext.script import Manager
 from learnpython import settings
 
 
+# Initialize Flask application
 app = Flask('learnpython')
 app.config.from_object(settings)
 
+# Configure all necessary plugins
 babel = Babel(app)
 mail = Mail(app)
 manager = Manager(app)
 pages = FlatPages(app)
 
+# Register all possible urls
 views = LazyViews(app, '.views')
 views.add('/', redirect, defaults={'code': 301, 'location': '/index'})
 views.add('/<any(about, index):name>', 'page')
@@ -27,3 +30,4 @@ views.add('/subscribe',
           defaults={'name': 'subscribe'},
           endpoint='subscribe',
           methods=('GET', 'POST'))
+views.add_static('/favicon.ico', defaults={'filename': 'img/favicon.ico'})
