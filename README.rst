@@ -10,6 +10,7 @@ Requirements
 * `Python <http://www.python.org/>`_ 2.6 or 2.7
 * `Make <http://www.gnu.org/make>`_
 * `virtualenv <http://www.virtualenv.org/>`_ 1.6 or higher
+* `bootstrapper <http://pypi.python.org/pypi/bootstrapper>`_ 0.1 or higher
 
 Installation
 ============

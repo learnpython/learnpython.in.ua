@@ -28,7 +28,7 @@ WINDMILL_PORT ?= 4354
 WINDMILL_URL = http://$(WINDMILL_HOST):$(WINDMILL_PORT)
 
 bootstrap:
-	PROJECT=$(PROJECT) bootstrap.py
+	PROJECT=$(PROJECT) bootstrapper
 
 clean:
 	find . -name '*.pyc' -delete
