@@ -17,15 +17,16 @@ FLATPAGES_HTML_RENDERER = 'learnpython.utils:restructuredtext_filter'
 FLATPAGES_ROOT = rel('data')
 
 # Mail settings
-DEFAULT_MAIL_SENDER = 'please, set proper value in ``settings_local`` module'
+DEFAULT_MAIL_SENDER = 'Learn Python <learnpython@igordavydenko.com>'
 MAIL_FAIL_SILENTLY = False
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
-MAIL_USERNAME = 'please, set proper value in ``settings_local`` module'
-MAIL_PASSWORD = 'please, set proper value in ``settings_local`` module'
+MAIL_SERVER = os.environ.get('MAILGUN_SMTP_SERVER', 'localhost')
+MAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT', 25)
+MAIL_USERNAME = os.environ.get('MAILGUN_SMTP_LOGIN', '')
+MAIL_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD', '')
 
 # WTForms settings
-SECRET_KEY = 'Z\xc7G\xaf\x15$\xc1O\x8d\xb0Bks\x9b\n\x9a'
+SECRET_KEY = \
+    os.environ.get('SECRET_KEY', 'Z\xc7G\xaf\x15$\xc1O\x8d\xb0Bks\x9b\n\x9a')
 
 
 # Import local settings if any
