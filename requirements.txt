@@ -9,6 +9,7 @@ Flask-Mail==0.7.2
 Flask-Script==0.4.0
 Flask-Testing==0.4
 Flask-WTF==0.8
+gunicorn==0.14.6
 lxml==2.3.5
 nose==1.2.1
 ordereddict==1.1
