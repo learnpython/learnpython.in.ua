@@ -3,12 +3,9 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
-#, fuzzy
-msgid ""
-msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-26 12:54+0300\n"
+"POT-Creation-Date: 2012-09-30 09:58+0300\n"
 "PO-Revision-Date: 2012-09-26 12:54+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -19,48 +16,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: learnpython/forms.py:23
+#: learnpython/forms.py:24
 msgid "Invalid email address."
 msgstr "Введите правильный email."
 
-#: learnpython/forms.py:30
+#: learnpython/forms.py:33
 msgid "This field is required."
 msgstr "Обязательное поле."
 
-#: learnpython/forms.py:40
+#: learnpython/forms.py:44
 msgid "Name"
 msgstr "Имя"
 
-#: learnpython/forms.py:41
+#: learnpython/forms.py:45
 msgid "Email"
 msgstr "Email"
 
-#: learnpython/forms.py:63
+#: learnpython/forms.py:67
 msgid "Subject"
 msgstr "Тема"
 
-#: learnpython/forms.py:64
+#: learnpython/forms.py:68
 msgid "Message"
 msgstr "Сообщение"
 
-#: learnpython/forms.py:68
+#: learnpython/forms.py:72
 msgid "Feedback"
 msgstr "Обратная связь"
 
-#: learnpython/forms.py:79
+#: learnpython/forms.py:83
 msgid "Phone"
 msgstr "Телефон"
 
-#: learnpython/forms.py:80
+#: learnpython/forms.py:84
 msgid "Flow"
 msgstr "Поток"
 
-#: learnpython/forms.py:82
+#: learnpython/forms.py:86
 msgid "Additional comments"
 msgstr "Дополнительные комментарии"
 
-#: learnpython/forms.py:85 learnpython/templates/base.html:37
-#: learnpython/templates/base.html:53
+#: learnpython/forms.py:89 learnpython/templates/base.html:40
+#: learnpython/templates/base.html:56
 msgid "Subscribe"
 msgstr "Запись на курс"
 
@@ -91,31 +88,31 @@ msgstr ""
 " всю необходимую информацию о сроках и цене курса на ваш электронный "
 "адрес!"
 
-#: learnpython/templates/base.html:4 learnpython/templates/base.html:18
+#: learnpython/templates/base.html:4 learnpython/templates/base.html:17
 msgid "Learn Python in Kyiv, Ukraine"
 msgstr "Учим Python в Киеве"
 
-#: learnpython/templates/base.html:22 learnpython/templates/base.html:52
+#: learnpython/templates/base.html:21 learnpython/templates/base.html:55
 msgid "About us"
 msgstr "О нас"
 
-#: learnpython/templates/base.html:23 learnpython/templates/base.html:54
+#: learnpython/templates/base.html:22 learnpython/templates/base.html:57
 msgid "Contacts"
 msgstr "Контакты"
 
-#: learnpython/templates/base.html:27
+#: learnpython/templates/base.html:26
 msgid "3 flows on 12 studies"
 msgstr "3 потока по 12 занятий"
 
-#: learnpython/templates/base.html:34 learnpython/templates/base.html:48
+#: learnpython/templates/base.html:37 learnpython/templates/base.html:51
 msgid "Medium flow"
 msgstr "Medium поток"
 
-#: learnpython/templates/base.html:35 learnpython/templates/base.html:49
+#: learnpython/templates/base.html:38 learnpython/templates/base.html:52
 msgid "Normal flow"
 msgstr "Normal поток"
 
-#: learnpython/templates/base.html:36 learnpython/templates/base.html:50
+#: learnpython/templates/base.html:39 learnpython/templates/base.html:53
 msgid "Advanced flow"
 msgstr "Advanced поток"
 
@@ -127,11 +124,20 @@ msgstr "Пожалуйста, исправьте указанные ошибки
 msgid "Submit"
 msgstr "Отправить"
 
+#: learnpython/templates/error.html:3
+#, python-format
+msgid "Error %(code)s"
+msgstr "Ошибка %(code)s"
+
+#: learnpython/templates/error.html:5
+msgid "Click here to return to index page"
+msgstr "Нажмите здесь, для перехода на главную страницу"
+
 #: learnpython/templates/status.html:10
-msgid "You will redirect to next page in 10 seconds."
-msgstr "Вы будете перенаправлены на следующую страницу через 10 секунд."
+msgid "You will redirect to next page in 10 seconds"
+msgstr "Вы будете перенаправлены на следующую страницу через 10 секунд"
 
 #: learnpython/templates/status.html:11
-msgid "Click here, if you don't wanna wait."
-msgstr "Нажмите здесь, если вы не хотите ждать."
+msgid "Click here, if you don't wanna wait"
+msgstr "Нажмите здесь, если вы не хотите ждать"
 

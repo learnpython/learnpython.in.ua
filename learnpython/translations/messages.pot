@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: learnpython VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-26 12:54+0300\n"
+"POT-Creation-Date: 2012-09-30 09:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,48 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: learnpython/forms.py:23
+#: learnpython/forms.py:24
 msgid "Invalid email address."
 msgstr ""
 
-#: learnpython/forms.py:30
+#: learnpython/forms.py:33
 msgid "This field is required."
 msgstr ""
 
-#: learnpython/forms.py:40
+#: learnpython/forms.py:44
 msgid "Name"
 msgstr ""
 
-#: learnpython/forms.py:41
+#: learnpython/forms.py:45
 msgid "Email"
 msgstr ""
 
-#: learnpython/forms.py:63
+#: learnpython/forms.py:67
 msgid "Subject"
 msgstr ""
 
-#: learnpython/forms.py:64
+#: learnpython/forms.py:68
 msgid "Message"
 msgstr ""
 
-#: learnpython/forms.py:68
+#: learnpython/forms.py:72
 msgid "Feedback"
 msgstr ""
 
-#: learnpython/forms.py:79
+#: learnpython/forms.py:83
 msgid "Phone"
 msgstr ""
 
-#: learnpython/forms.py:80
+#: learnpython/forms.py:84
 msgid "Flow"
 msgstr ""
 
-#: learnpython/forms.py:82
+#: learnpython/forms.py:86
 msgid "Additional comments"
 msgstr ""
 
-#: learnpython/forms.py:85 learnpython/templates/base.html:37
-#: learnpython/templates/base.html:53
+#: learnpython/forms.py:89 learnpython/templates/base.html:40
+#: learnpython/templates/base.html:56
 msgid "Subscribe"
 msgstr ""
 
@@ -83,31 +83,31 @@ msgid ""
 " necessary information later!"
 msgstr ""
 
-#: learnpython/templates/base.html:4 learnpython/templates/base.html:18
+#: learnpython/templates/base.html:4 learnpython/templates/base.html:17
 msgid "Learn Python in Kyiv, Ukraine"
 msgstr ""
 
-#: learnpython/templates/base.html:22 learnpython/templates/base.html:52
+#: learnpython/templates/base.html:21 learnpython/templates/base.html:55
 msgid "About us"
 msgstr ""
 
-#: learnpython/templates/base.html:23 learnpython/templates/base.html:54
+#: learnpython/templates/base.html:22 learnpython/templates/base.html:57
 msgid "Contacts"
 msgstr ""
 
-#: learnpython/templates/base.html:27
+#: learnpython/templates/base.html:26
 msgid "3 flows on 12 studies"
 msgstr ""
 
-#: learnpython/templates/base.html:34 learnpython/templates/base.html:48
+#: learnpython/templates/base.html:37 learnpython/templates/base.html:51
 msgid "Medium flow"
 msgstr ""
 
-#: learnpython/templates/base.html:35 learnpython/templates/base.html:49
+#: learnpython/templates/base.html:38 learnpython/templates/base.html:52
 msgid "Normal flow"
 msgstr ""
 
-#: learnpython/templates/base.html:36 learnpython/templates/base.html:50
+#: learnpython/templates/base.html:39 learnpython/templates/base.html:53
 msgid "Advanced flow"
 msgstr ""
 
@@ -119,11 +119,20 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
+#: learnpython/templates/error.html:3
+#, python-format
+msgid "Error %(code)s"
+msgstr ""
+
+#: learnpython/templates/error.html:5
+msgid "Click here to return to index page"
+msgstr ""
+
 #: learnpython/templates/status.html:10
-msgid "You will redirect to next page in 10 seconds."
+msgid "You will redirect to next page in 10 seconds"
 msgstr ""
 
 #: learnpython/templates/status.html:11
-msgid "Click here, if you don't wanna wait."
+msgid "Click here, if you don't wanna wait"
 msgstr ""
 
