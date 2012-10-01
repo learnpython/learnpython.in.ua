@@ -48,6 +48,10 @@ def contacts(name=None):
     return render_template('contacts.html', **context)
 
 
+def error(e):
+    return render_template('error.html', error=e), e.code
+
+
 def flows():
     data = filter(lambda item: item[0].startswith('flows/'),
                   pages._pages.items())

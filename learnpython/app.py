@@ -20,8 +20,7 @@ pages = FlatPages(app)
 
 # Register all possible urls
 views = LazyViews(app, '.views')
-views.add('/', redirect, defaults={'code': 301, 'location': '/index'})
-views.add('/<any(about, index):name>', 'page')
+views.add('/', 'page', defaults={'name': 'index'}, endpoint='index')
 views.add('/contacts', 'contacts', methods=('GET', 'POST'))
 views.add('/flows', 'flows')
 views.add('/status', 'status')
@@ -30,4 +29,7 @@ views.add('/subscribe',
           defaults={'name': 'subscribe'},
           endpoint='subscribe',
           methods=('GET', 'POST'))
+views.add_error(404, 'error')
+views.add_error(500, 'error')
 views.add_static('/favicon.ico', defaults={'filename': 'img/favicon.ico'})
+views.add('/<path:name>', 'page')
