@@ -18,13 +18,7 @@ class TestViews(TestCase):
         self._ctx.pop()
 
     def test_index(self):
-        index_url = url_for('page', name='index')
-        index_url_ext = url_for('page', name='index', _external=True)
-
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 301)
-        self.assertEqual(response.headers['Location'], index_url_ext)
-
+        index_url = url_for('index')
         response = self.client.get(index_url)
         self.assertEqual(response.status_code, 200)
         self.assertIn('Learn Python', response.data)

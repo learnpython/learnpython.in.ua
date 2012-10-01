@@ -112,9 +112,6 @@ class TestViewsWithWebTest(TestCase):
             method('active', element.attrib['class'])
 
     def test_index(self):
-        response = self.webtest.get('/', status=301)
-        self.assertRedirects(response, self.index_url)
-
         self.check_page('index', self.index_url)
 
         response = self.webtest.get(self.index_url)
@@ -135,7 +132,7 @@ class TestViewsWithWebTest(TestCase):
             (self.about_url, 'About us'),
             (self.contacts_url, 'Contacts')
         )
-        self.check_links(doc('header a'), result)
+        self.check_links(doc('header .left-wrapper p a'), result)
 
         result = (
             (self.flows_url + '#medium', 'Medium flow'),

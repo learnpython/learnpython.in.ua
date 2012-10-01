@@ -82,10 +82,6 @@ class TestViewsWithFlaskTesting(TestCase):
             self.assertIn('id="{0}"'.format(name), response.data)
 
     def test_index(self):
-        response = self.client.get('/')
-        self.assertRedirects(response, self.index_url)
-        self.assertStatus(response, 301)
-
         self.check_page('index', self.index_url)
 
         urls = (self.contacts_url, self.flows_url + '#medium',

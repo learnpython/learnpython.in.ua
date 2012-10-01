@@ -44,11 +44,10 @@ class TestViewsWithSplinter(TestCase):
         return self.host + url
 
     def test_index(self):
-        index_url = self.url('page', name='index')
+        index_url = self.url('index')
 
-        self.browser.visit(self.url('/'))
+        self.browser.visit(index_url)
         self.assertEqual(self.browser.url, index_url)
-        self.assertEqual(self.browser.title, 'Learn Python in Kyiv, Ukraine')
 
         link = self.browser.find_link_by_text('Learn Python')
         self.assertEqual(len(link), 1)

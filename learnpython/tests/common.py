@@ -24,6 +24,7 @@ class TestCase(BaseTestCase):
     Improve base test class from ``Flask-Testing`` with adding ``url`` method
     and ``udata`` property to each test client response.
     """
+    BABEL_DEFAULT_LOCALE = 'en'
     CSRF_ENABLED = False
     TESTING = True
 
@@ -31,7 +32,7 @@ class TestCase(BaseTestCase):
         self.about_url = self.url('page', name='about')
         self.contacts_url = self.url('contacts')
         self.flows_url = self.url('flows')
-        self.index_url = self.url('page', name='index')
+        self.index_url = self.url('index')
         self.status_url = self.url('status')
         self.subscribe_url = self.url('subscribe')
 

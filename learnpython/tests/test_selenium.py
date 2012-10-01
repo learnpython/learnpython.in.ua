@@ -51,9 +51,9 @@ class TestViewsWithSelenium(TestCase):
         return self.host + url
 
     def test_index(self):
-        index_url = self.url('page', name='index')
+        index_url = self.url('index')
 
-        self.browser.get(self.url('/'))
+        self.browser.get(index_url)
         self.assertEqual(self.browser.current_url, index_url)
         time.sleep(1)
 
