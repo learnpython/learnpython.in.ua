@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ _("Error %(code)s", code=error.code) }}</h1>
+  <p><small>
+    <a href="{{ url_for("index") }}">{{ _("Click here to return to index page") }}</a>
+  </small></p>
+{% endblock %}

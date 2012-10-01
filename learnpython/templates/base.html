@@ -5,7 +5,6 @@
   <meta charset="utf-8">
 
   <link href="{{ url_for("static", filename="css/screen.css") }}" media="screen,projection,tv" rel="stylesheet" type="text/css">
-
   {% block extra_head %}{% endblock %}
 </head>
 
@@ -15,7 +14,7 @@
     <header>
       <div class="left-wrapper">
         <h1>
-          {% if not is_index %}<a href="{{ url_for("page", name="index") }}">{% endif %}{{ _("Learn Python in Kyiv, Ukraine") }}
+          {% if not is_index %}<a href="{{ url_for("index") }}">{% endif %}{{ _("Learn Python in Kyiv, Ukraine") }}
           {% if not is_index %}</a>{% endif %}
         </h1>
         <p>
@@ -47,7 +46,7 @@
     </article>
 
     <footer>
-      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("page", name="index") }}">Learn Python</a><br>
+      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("index") }}">Learn Python</a><br>
 
       <a id="medium-link-footer" href="{{ url_for("flows", _anchor="medium") }}">{{ _("Medium flow") }}</a> &middot;
       <a id="normal-link-footer" href="{{ url_for("flows", _anchor="normal") }}">{{ _("Normal flow") }}</a> &middot;
