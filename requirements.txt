@@ -4,9 +4,8 @@ docutils==0.9.1
 Flask==0.9
 Flask-Babel==0.8
 Flask-FlatPages==0.3
-Flask-LazyViews==0.2
+Flask-LazyViews==0.3
 Flask-Mail==0.7.2
-Flask-Script==0.4.0
 Flask-Testing==0.4
 Flask-WTF==0.8
 gunicorn==0.14.6
@@ -20,3 +19,5 @@ twill==0.9
 WebTest==1.4.0
 windmill==1.6
 WTForms==1.0.2
+
+https://github.com/techniq/flask-script/tarball/master#egg=Flask-Script
