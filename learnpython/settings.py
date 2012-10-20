@@ -17,7 +17,7 @@ FLATPAGES_HTML_RENDERER = 'learnpython.utils:restructuredtext_filter'
 FLATPAGES_ROOT = rel('data')
 
 # Mail settings
-DEFAULT_MAIL_SENDER = 'Learn Python <learnpython@igordavydenko.com>'
+DEFAULT_MAIL_SENDER = 'Learn Python <we@learnpython.in.ua>'
 MAIL_FAIL_SILENTLY = False
 MAIL_SERVER = os.environ.get('MAILGUN_SMTP_SERVER', 'localhost')
 MAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT', 25)
