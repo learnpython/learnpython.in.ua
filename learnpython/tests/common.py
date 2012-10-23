@@ -42,7 +42,7 @@ class TestCase(BaseTestCase):
 
         self.assertEqual(message.subject, '[Learn Python] {0}'.format(subject))
         self.assertEqual(
-            message.recipients, ['learnpython@igordavydenko.com']
+            message.recipients, ['we@learnpython.in.ua']
         )
         self.assertEqual(message.sender, '{0} <{1}>'.format(name, email))
         self.assertIn('Learn Python', message.body)

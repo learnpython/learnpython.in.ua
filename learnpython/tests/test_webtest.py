@@ -135,8 +135,7 @@ class TestViewsWithWebTest(TestCase):
         self.check_links(doc('header .left-wrapper p a'), result)
 
         result = (
-            (self.flows_url + '#medium', 'Medium flow'),
-            (self.flows_url + '#normal', 'Normal flow'),
+            (self.flows_url + '#web', 'Web flow'),
             (self.flows_url + '#advanced', 'Advanced flow'),
             (self.subscribe_url, u'Subscribe →'),
         )

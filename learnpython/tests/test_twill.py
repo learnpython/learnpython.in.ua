@@ -164,13 +164,9 @@ class TestViewsWithTwill(TestCase):
             c.code(200)
             c.url(t.url(self.subscribe_url))
 
-            c.follow('Medium flow')
+            c.follow('Web flow')
             c.code(200)
-            c.url(t.url(self.flows_url) + '#medium$')
-
-            c.follow('Normal flow')
-            c.code(200)
-            c.url(t.url(self.flows_url) + '#normal$')
+            c.url(t.url(self.flows_url) + '#web$')
 
             c.follow('Advanced flow')
             c.code(200)
