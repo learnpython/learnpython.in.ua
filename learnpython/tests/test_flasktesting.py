@@ -84,9 +84,9 @@ class TestViewsWithFlaskTesting(TestCase):
     def test_index(self):
         self.check_page('index', self.index_url)
 
-        urls = (self.contacts_url, self.flows_url + '#medium',
-                self.flows_url + '#normal', self.flows_url + '#advanced',
-                self.subscribe_url, self.index_url)
+        urls = (self.contacts_url, self.flows_url + '#web',
+                self.flows_url + '#advanced', self.subscribe_url,
+                self.index_url)
 
         response = self.client.get(self.index_url)
         self.assert200(response)

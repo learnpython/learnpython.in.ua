@@ -8,6 +8,7 @@ class TestData(TestCase):
     def check_flow(self, name):
         fullname = 'flows/{0}'.format(name)
         flow = self.check_page(fullname)
+        self.assertIn('active', flow.meta)
         self.assertIn('order', flow.meta)
 
     def check_page(self, mixed):
@@ -23,11 +24,10 @@ class TestData(TestCase):
     def test_flows(self):
         data = filter(lambda key: key.startswith('flows/'),
                       pages._pages.keys())
-        self.assertEqual(len(data), 3)
+        self.assertEqual(len(data), 2)
 
         self.check_flow('advanced')
-        self.check_flow('medium')
-        self.check_flow('normal')
+        self.check_flow('web')
 
     def test_pages(self):
         data = filter(lambda key: not '/' in key, pages._pages.keys())

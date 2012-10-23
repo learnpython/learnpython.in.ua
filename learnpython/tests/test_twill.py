@@ -240,11 +240,11 @@ class TestViewsWithTwill(TestCase):
                 c.url(t.url(self.status_url))
 
                 self.assertEqual(len(outbox), 1)
-                args = (TEST_NAME, TEST_EMAIL, 'medium')
+                args = (TEST_NAME, TEST_EMAIL, 'web')
                 self.check_message(outbox[0], 'Subscribe', *args)
 
             c.go(self.subscribe_url)
-            flow = choice(('medium', 'normal', 'advanced'))
+            flow = choice(('web', 'advanced'))
 
             c.fv(1, 'name', TEST_NAME)
             c.fv(1, 'email', TEST_EMAIL)
