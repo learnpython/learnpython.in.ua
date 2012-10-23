@@ -3,10 +3,12 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
+msgid ""
+msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-30 09:58+0300\n"
-"PO-Revision-Date: 2012-09-26 12:54+0300\n"
+"POT-Creation-Date: 2012-10-23 10:59+0300\n"
+"PO-Revision-Date: 2012-10-23 10:59+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
@@ -56,8 +58,8 @@ msgstr "Поток"
 msgid "Additional comments"
 msgstr "Дополнительные комментарии"
 
-#: learnpython/forms.py:89 learnpython/templates/base.html:40
-#: learnpython/templates/base.html:56
+#: learnpython/forms.py:89 learnpython/templates/base.html:53
+#: learnpython/templates/base.html:68
 msgid "Subscribe"
 msgstr "Запись на курс"
 
@@ -88,33 +90,37 @@ msgstr ""
 " всю необходимую информацию о сроках и цене курса на ваш электронный "
 "адрес!"
 
-#: learnpython/templates/base.html:4 learnpython/templates/base.html:17
+#: learnpython/templates/base.html:4 learnpython/templates/base.html:31
 msgid "Learn Python in Kyiv, Ukraine"
 msgstr "Учим Python в Киеве"
 
-#: learnpython/templates/base.html:21 learnpython/templates/base.html:55
+#: learnpython/templates/base.html:35 learnpython/templates/base.html:67
 msgid "About us"
 msgstr "О нас"
 
-#: learnpython/templates/base.html:22 learnpython/templates/base.html:57
+#: learnpython/templates/base.html:36 learnpython/templates/base.html:69
 msgid "Contacts"
 msgstr "Контакты"
 
-#: learnpython/templates/base.html:26
-msgid "3 flows on 12 studies"
-msgstr "3 потока по 12 занятий"
+#: learnpython/templates/base.html:40
+msgid "2 flows on 12 studies"
+msgstr "2 потока по 12 занятий"
 
-#: learnpython/templates/base.html:37 learnpython/templates/base.html:51
-msgid "Medium flow"
-msgstr "Medium поток"
+#: learnpython/templates/base.html:44
+msgid "Fork us on GitHub"
+msgstr "Форкайте нас на GitHub"
 
-#: learnpython/templates/base.html:38 learnpython/templates/base.html:52
-msgid "Normal flow"
-msgstr "Normal поток"
+#: learnpython/templates/base.html:51 learnpython/templates/base.html:64
+msgid "Web flow"
+msgstr "Web поток"
 
-#: learnpython/templates/base.html:39 learnpython/templates/base.html:53
+#: learnpython/templates/base.html:52 learnpython/templates/base.html:65
 msgid "Advanced flow"
 msgstr "Advanced поток"
+
+#: learnpython/templates/base.html:62
+msgid "Learn Python"
+msgstr "Learn Python"
 
 #: learnpython/templates/contacts.html:9
 msgid "Cannot submit form! Please, fix errors below:"
@@ -140,4 +146,3 @@ msgstr "Вы будете перенаправлены на следующую �
 #: learnpython/templates/status.html:11
 msgid "Click here, if you don't wanna wait"
 msgstr "Нажмите здесь, если вы не хотите ждать"
-

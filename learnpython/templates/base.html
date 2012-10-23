@@ -7,6 +7,7 @@
   <link href="{{ url_for("static", filename="css/screen.css") }}" media="screen,projection,tv" rel="stylesheet" type="text/css">
   {% block extra_head %}{% endblock %}
 
+  {% if not request.host.startswith("127.0.0.1") %}
   <script type="text/javascript"><!--
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-5480567-4']);
@@ -18,6 +19,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   --></script>
+  {% endif %}
 </head>
 
 <body>
@@ -30,24 +32,23 @@
           {% if not is_index %}</a>{% endif %}
         </h1>
         <p>
-          <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">{{ _("About us") }}</a> -
+          <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">{{ _("About us") }}</a> &ndash;
           <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">{{ _("Contacts") }}</a>
         </p>
       </div>
       <div class="right-wrapper">
-        <h3>{{ _("3 flows on 12 studies") }}</h3>
+        <h3>{{ _("2 flows on 12 studies") }}</h3>
       </div>
       <div class="clear">
         <a class="github-ribbon" href="https://github.com/playpauseandstop/learnpython.in.ua">
-          <img alt="Fork us on GitHub" src="{{ url_for("static", filename="img/github-ribbon.png") }}">
+          <img alt="{{ _("Fork us on GitHub") }}" src="{{ url_for("static", filename="img/github-ribbon.png") }}">
         </a>
       </div>
     </header>
 
     <nav>
       <ul>
-        <li><a id="medium-link-nav" href="{{ url_for("flows", _anchor="medium") }}">{{ _("Medium flow") }}</a></li>
-        <li><a id="normal-link-nav" href="{{ url_for("flows", _anchor="normal") }}">{{ _("Normal flow") }}</a></li>
+        <li><a id="web-link-nav" href="{{ url_for("flows", _anchor="web") }}">{{ _("Web flow") }}</a></li>
         <li><a id="advanced-link-nav" href="{{ url_for("flows", _anchor="advanced") }}">{{ _("Advanced flow") }}</a></li>
         <li><a class="{% if is_subscribe %}active {% endif %}subscribe" href="{{ url_for("subscribe") }}">{{ _("Subscribe") }} &rarr;</a></li>
       </ul>
@@ -58,14 +59,13 @@
     </article>
 
     <footer>
-      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("index") }}">Learn Python</a><br>
+      2012 &copy; <a{% if is_index %} class="active"{% endif %} href="{{ url_for("index") }}">{{ _("Learn Python") }}</a><br>
 
-      <a id="medium-link-footer" href="{{ url_for("flows", _anchor="medium") }}">{{ _("Medium flow") }}</a> &middot;
-      <a id="normal-link-footer" href="{{ url_for("flows", _anchor="normal") }}">{{ _("Normal flow") }}</a> &middot;
+      <a id="web-link-footer" href="{{ url_for("flows", _anchor="web") }}">{{ _("Web flow") }}</a> &ndash;
       <a id="advanced-link-footer" href="{{ url_for("flows", _anchor="advanced") }}">{{ _("Advanced flow") }}</a><br>
 
-      <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">{{ _("About us") }}</a> &middot;
-      <a{% if is_subscribe %} class="active"{% endif %} href="{{ url_for("subscribe") }}">{{ _("Subscribe") }}</a> &middot;
+      <a{% if is_about %} class="active"{% endif %} href="{{ url_for("page", name="about") }}">{{ _("About us") }}</a> &ndash;
+      <a{% if is_subscribe %} class="active"{% endif %} href="{{ url_for("subscribe") }}">{{ _("Subscribe") }}</a> &ndash;
       <a{% if is_contacts %} class="active"{% endif %} href="{{ url_for("page", name="contacts") }}">{{ _("Contacts") }}</a>
     </footer>
   </div>

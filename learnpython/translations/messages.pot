@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: learnpython VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-30 09:58+0300\n"
+"POT-Creation-Date: 2012-10-23 10:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,8 +58,8 @@ msgstr ""
 msgid "Additional comments"
 msgstr ""
 
-#: learnpython/forms.py:89 learnpython/templates/base.html:40
-#: learnpython/templates/base.html:56
+#: learnpython/forms.py:89 learnpython/templates/base.html:53
+#: learnpython/templates/base.html:68
 msgid "Subscribe"
 msgstr ""
 
@@ -83,32 +83,36 @@ msgid ""
 " necessary information later!"
 msgstr ""
 
-#: learnpython/templates/base.html:4 learnpython/templates/base.html:17
+#: learnpython/templates/base.html:4 learnpython/templates/base.html:31
 msgid "Learn Python in Kyiv, Ukraine"
 msgstr ""
 
-#: learnpython/templates/base.html:21 learnpython/templates/base.html:55
+#: learnpython/templates/base.html:35 learnpython/templates/base.html:67
 msgid "About us"
 msgstr ""
 
-#: learnpython/templates/base.html:22 learnpython/templates/base.html:57
+#: learnpython/templates/base.html:36 learnpython/templates/base.html:69
 msgid "Contacts"
 msgstr ""
 
-#: learnpython/templates/base.html:26
-msgid "3 flows on 12 studies"
+#: learnpython/templates/base.html:40
+msgid "2 flows on 12 studies"
 msgstr ""
 
-#: learnpython/templates/base.html:37 learnpython/templates/base.html:51
-msgid "Medium flow"
+#: learnpython/templates/base.html:44
+msgid "Fork us on GitHub"
 msgstr ""
 
-#: learnpython/templates/base.html:38 learnpython/templates/base.html:52
-msgid "Normal flow"
+#: learnpython/templates/base.html:51 learnpython/templates/base.html:64
+msgid "Web flow"
 msgstr ""
 
-#: learnpython/templates/base.html:39 learnpython/templates/base.html:53
+#: learnpython/templates/base.html:52 learnpython/templates/base.html:65
 msgid "Advanced flow"
+msgstr ""
+
+#: learnpython/templates/base.html:62
+msgid "Learn Python"
 msgstr ""
 
 #: learnpython/templates/contacts.html:9
