@@ -36,8 +36,8 @@ clean:
 compilemessages:
 	$(ENV)/bin/pybabel compile -f -d $(TRANSLATIONS_DIR)
 
-deploy:
-	$(ENV)/bin/fab deploy:$(TARGET)
+deploy: test
+	git push heroku master
 
 distclean: clean
 	rm -rf $(ENV)/
