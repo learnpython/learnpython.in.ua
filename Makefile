@@ -1,4 +1,4 @@
-.PHONY: bootstrap clean distclean killselenium killserver manage selenium server shell test test_selenium test_splinter test_unit test_windmill
+.PHONY: bootstrap clean compilemessages distclean killselenium killserver manage messages selenium server shell test test_selenium test_splinter test_unit test_windmill
 
 ENV ?= env
 PROJECT = learnpython
