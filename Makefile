@@ -9,7 +9,6 @@ MANAGE = $(PYTHON) $(PROJECT)/manage.py
 
 HOST ?= 0.0.0.0
 PORT ?= 4351
-TARGET ?= octave
 
 SELENIUM_BROWSER ?= firefox
 SELENIUM_JAR ?= $(ENV)/bin/selenium-server-standalone-2.25.0.jar
@@ -58,6 +57,9 @@ messages:
 	[ ! -d $(TRANSLATIONS_DIR)/ru ] && \
 	$(ENV)/bin/pybabel init -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru || \
 	$(ENV)/bin/pybabel update -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru
+
+pep8:
+	$(ENV)/bin/pep8 --count --statistics $(PROJECT)/
 
 selenium:
 	java -jar $(SELENIUM_JAR)

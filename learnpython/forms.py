@@ -65,8 +65,9 @@ class ContactsForm(BaseContactsForm):
     Feedback form.
     """
     subject = wtf.TextField(_('Subject'))
-    message = wtf.TextField(_('Message'), validators=[Required()],
-        widget=wtf.TextArea())
+    message = wtf.TextField(
+        _('Message'), validators=[Required()], widget=wtf.TextArea()
+    )
 
     template = 'mails/contacts.txt'
     title = _('Feedback')
@@ -81,8 +82,9 @@ class SubscribeForm(BaseContactsForm):
     Subscribe form.
     """
     phone = wtf.TextField(_('Phone'))
-    flow = wtf.SelectField(_('Flow'), choices=FLOW_CHOICES,
-        validators=[Required()])
+    flow = wtf.SelectField(
+        _('Flow'), choices=FLOW_CHOICES, validators=[Required()]
+    )
     comments = wtf.TextField(_('Additional comments'), widget=wtf.TextArea())
 
     template = 'mails/subscribe.txt'
