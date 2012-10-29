@@ -1,14 +1,20 @@
 from flask import url_for
-from flask.ext.testing import JsonResponseMixin, TestCase as BaseTestCase, \
+from flask.ext.testing import JsonResponseMixin, TestCase as FlaskTestCase, \
     Twill as BaseTwill
 from twill import commands
 from webtest import TestApp
 
 from learnpython.app import app, mail
 
+if not hasattr(FlaskTestCase, 'assertIn'):
+    from unittest2 import TestCase
+    BaseTestCase = type('BaseTestCase', (FlaskTestCase, TestCase), {})
+else:
+    BaseTestCase = FlaskTestCase
+
 
 __all__ = ('TEST_COMMENTS', 'TEST_EMAIL', 'TEST_MESSAGE', 'TEST_NAME',
-           'TEST_PHONE', 'TEST_SUBJECT', 'Mechanize', 'TestCase', 'Twill')
+           'TEST_PHONE', 'TEST_SUBJECT', 'TestCase', 'Twill')
 
 
 TEST_COMMENTS = 'Test additional comments.'
