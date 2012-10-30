@@ -1,3 +1,5 @@
+import sys
+
 from random import choice, randint
 
 from twill.commands import config
@@ -6,6 +8,9 @@ from learnpython.app import pages
 
 from .common import TEST_COMMENTS, TEST_EMAIL, TEST_MESSAGE, TEST_NAME, \
     TEST_PHONE, TEST_SUBJECT, TestCase, Twill
+
+
+IS_PYTHON_26 = sys.version_info[:2] == (2, 6)
 
 
 class TestViewsWithTwill(TestCase):
@@ -164,13 +169,22 @@ class TestViewsWithTwill(TestCase):
             c.code(200)
             c.url(t.url(self.subscribe_url))
 
-            c.follow('Web flow')
-            c.code(200)
-            c.url(t.url(self.flows_url) + '#web$')
+            if IS_PYTHON_26:
+                c.go(t.url(self.flows_url))
+                c.code(200)
+                c.find('Web flow')
+                c.find('Advanced flow')
 
-            c.follow('Advanced flow')
-            c.code(200)
-            c.url(t.url(self.flows_url) + '#advanced$')
+                c.find('<div class="active tab" id="web">')
+                c.find('<div class="tab" id="advanced">')
+            else:
+                c.follow('Web flow')
+                c.code(200)
+                c.url(t.url(self.flows_url) + '#web$')
+
+                c.follow('Advanced flow')
+                c.code(200)
+                c.url(t.url(self.flows_url) + '#advanced$')
 
             c.follow('Learn Python')
             c.code(200)
