@@ -94,6 +94,14 @@ class TestViewsWithFlaskTesting(TestCase):
         for url in urls:
             self.assertIn('href="{0}"'.format(url), response.data)
 
+    def test_nosubscribe(self):
+        self.config('ALLOW_SUBSCRIBERS', False)
+
+        response = self.client.get(self.subscribe_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn('<form action="" ', response.data)
+        self.assertIn('<h2>', response.data)
+
     def test_static(self):
         url = self.url('static', filename='css/screen.css')
         response = self.client.get(url)

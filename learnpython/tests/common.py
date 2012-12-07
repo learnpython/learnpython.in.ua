@@ -30,6 +30,7 @@ class TestCase(BaseTestCase):
     Improve base test class from ``Flask-Testing`` with adding ``url`` method
     and ``udata`` property to each test client response.
     """
+    ALLOW_SUBSCRIBERS = True
     BABEL_DEFAULT_LOCALE = 'en'
     CSRF_ENABLED = False
     TESTING = True
@@ -41,6 +42,14 @@ class TestCase(BaseTestCase):
         self.index_url = self.url('index')
         self.status_url = self.url('status')
         self.subscribe_url = self.url('subscribe')
+
+    def tearDown(self):
+        for attr in dir(self):
+            if not attr.startswith('original_'):
+                continue
+
+            key = attr.replace('original_', '')
+            self.app.config[key] = getattr(self, attr)
 
     def check_message(self, message, subject, *args):
         assert len(args) > 2
@@ -55,6 +64,10 @@ class TestCase(BaseTestCase):
 
         for arg in args:
             self.assertIn(arg, message.body)
+
+    def config(self, key, value):
+        setattr(self, 'original_{0}'.format(key), self.app.config.get(key))
+        self.app.config[key] = value
 
     def create_app(self):
         for attr in dir(self):

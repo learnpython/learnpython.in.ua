@@ -190,6 +190,15 @@ class TestViewsWithTwill(TestCase):
             c.code(200)
             c.url(t.url(self.index_url))
 
+    def test_nosubscribe(self):
+        self.config('ALLOW_SUBSCRIBERS', False)
+
+        with Twill(self.app, port=self.port) as (t, c):
+            c.go(t.url(self.subscribe_url))
+            c.code(200)
+            c.notfind('<form action="" ')
+            c.find('<h2>')
+
     def test_static(self):
         url200 = self.url('static', filename='css/screen.css')
         url404 = self.url('static', filename='does_not_exists.exe')

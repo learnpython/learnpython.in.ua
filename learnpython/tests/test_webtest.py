@@ -114,7 +114,7 @@ class TestViewsWithWebTest(TestCase):
     def test_index(self):
         self.check_page('index', self.index_url)
 
-        response = self.webtest.get(self.index_url)
+        response = self.webtest.get(self.index_url, status=200)
         doc = response.pyquery
 
         self.assertEqual(len(doc('a.active')), 1)
@@ -125,7 +125,7 @@ class TestViewsWithWebTest(TestCase):
         self.assertEqual(len(doc('a[href="{0}"]'.format(self.flows_url))), 0)
         self.assertEqual(len(doc('a[href="{0}"]'.format(self.index_url))), 1)
         self.assertEqual(
-            len(doc('a[href="{0}"]'.format(self.subscribe_url))), 3
+            len(doc('a[href="{0}"]'.format(self.subscribe_url))), 2
         )
 
         result = (
@@ -140,6 +140,19 @@ class TestViewsWithWebTest(TestCase):
             (self.subscribe_url, u'Subscribe →'),
         )
         self.check_links(doc('nav a'), result)
+
+    def test_nosubscribe(self):
+        self.config('ALLOW_SUBSCRIBERS', False)
+
+        response = self.webtest.get(self.subscribe_url, status=200)
+        doc = response.pyquery
+
+        self.assertEqual(len(doc('form')), 0)
+        self.assertEqual(len(doc('h2')), 1)
+
+        title = doc('h2')[0]
+        page = pages.get('nosubscribe')
+        self.assertEqual(title.text, page.meta['title'])
 
     def test_static(self):
         url = self.url('static', filename='css/screen.css')

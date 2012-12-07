@@ -31,7 +31,7 @@ class TestData(TestCase):
 
     def test_pages(self):
         data = filter(lambda key: not '/' in key, pages._pages.keys())
-        self.assertEqual(len(data), 4)
+        self.assertEqual(len(data), 5)
 
         self.check_page('about')
         self.check_page('contacts')
