@@ -1,4 +1,4 @@
-.PHONY: bootstrap clean compilemessages distclean killselenium killserver manage messages selenium server shell test test_selenium test_splinter test_unit test_windmill
+.PHONY: bootstrap clean compilemessages distclean killselenium killserver manage messages pep8 pylint selenium server shell test test_selenium test_splinter test_unit test_windmill
 
 ENV ?= env
 PROJECT = learnpython
@@ -60,6 +60,9 @@ messages:
 
 pep8:
 	$(ENV)/bin/pep8 --count --statistics $(PROJECT)/
+
+pylint:
+	$(ENV)/bin/pylint $(PROJECT)/ --ignore=tests --disable=W0141,W0142
 
 selenium:
 	java -jar $(SELENIUM_JAR)
