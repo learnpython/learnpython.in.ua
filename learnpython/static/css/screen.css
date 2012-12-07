@@ -70,6 +70,13 @@ header a.active, footer a.active {
     font-weight: bold;
 }
 
+header a.twitter-icon {
+    background-image: url("../img/twitter-icon.png");
+    background-position: center left;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
 header a.github-ribbon {
     border: 0;
     position: absolute;
