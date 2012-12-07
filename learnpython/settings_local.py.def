@@ -1,3 +1,15 @@
+"""
+==========================
+learnpython.settings_local
+==========================
+
+Overwrite default settings for Learn Python site.
+
+"""
+
+# Debug settings
+DEBUG = True
+
 # Mail settings
 MAIL_SERVER = 'localhost'
 MAIL_PORT = 25

@@ -1,7 +1,21 @@
+"""
+====================
+learnpython.settings
+====================
+
+Default configuration for Learn Python site.
+
+You could customize things by overwrite these or other settings of Flask and
+other used extensions in ``settings_local`` module which should placed next to
+current one.
+
+"""
+
 import os
 
 
 DIRNAME = os.path.abspath(os.path.dirname(__file__))
+env = lambda key, value: os.environ.get(key, value)
 rel = lambda *parts: os.path.abspath(os.path.join(DIRNAME, *parts))
 
 # Debug settings
@@ -19,19 +33,21 @@ FLATPAGES_ROOT = rel('data')
 # Mail settings
 DEFAULT_MAIL_SENDER = 'Learn Python <we@learnpython.in.ua>'
 MAIL_FAIL_SILENTLY = False
-MAIL_SERVER = os.environ.get('MAILGUN_SMTP_SERVER', 'localhost')
-MAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT', 25)
-MAIL_USERNAME = os.environ.get('MAILGUN_SMTP_LOGIN', '')
-MAIL_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD', '')
+MAIL_SERVER = env('MAILGUN_SMTP_SERVER', 'localhost')
+MAIL_PORT = env('MAILGUN_SMTP_PORT', 25)
+MAIL_USERNAME = env('MAILGUN_SMTP_LOGIN', '')
+MAIL_PASSWORD = env('MAILGUN_SMTP_PASSWORD', '')
 
 # WTForms settings
-SECRET_KEY = \
-    os.environ.get('SECRET_KEY', 'Z\xc7G\xaf\x15$\xc1O\x8d\xb0Bks\x9b\n\x9a')
+SECRET_KEY = env('SECRET_KEY', 'Z\xc7G\xaf\x15$\xc1O\x8d\xb0Bks\x9b\n\x9a')
+
+# Contacts form settings
+MAIL_RECIPIENTS = env('MAIL_RECIPIENTS', 'we@learnpython.in.ua').split(',')
 
 
 # Import local settings if any
 try:
-    import settings_local
+    from learnpython import settings_local
 except ImportError:
     pass
 else:

@@ -1,4 +1,24 @@
-from flask import Flask, redirect
+"""
+===============
+learnpython.app
+===============
+
+Flask application for Learn Python web-site.
+
+Used extensions
+===============
+
+* `Flask-Babel <http://packages.python.org/Flask-Babel/>`_
+* `Flask-FlatPages <http://packages.python.org/Flask-FlatPages/>`_
+* `Flask-LazyViews <http://pypi.python.org/pypi/Flask-LazyViews>`_
+* `Flask-Mail <http://packages.python.org/Flask-Mail/>`_
+* `Flask-Script <http://flask-script.readthedocs.org/en/latest/>`_
+* `Flask-Testing <http://packages.python.org/Flask-Testing/>`_
+* `Flask-WTF <http://packages.python.org/Flask-WTF/>`_
+
+"""
+
+from flask import Flask
 from flask.ext.babel import Babel
 from flask.ext.flatpages import FlatPages
 from flask.ext.lazyviews import LazyViews

@@ -1,3 +1,12 @@
+"""
+=================
+learnpython.utils
+=================
+
+Utilities and helpers for Learn Python site.
+
+"""
+
 from docutils.core import publish_parts
 from flask import current_app
 from jinja2.filters import do_mark_safe

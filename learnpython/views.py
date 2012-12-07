@@ -1,14 +1,29 @@
+"""
+=================
+learnpython.views
+=================
+
+View functions for Learn Python web-site.
+
+"""
+
 import socket
 
 from flask import flash, render_template, redirect, request, url_for
 from flask.ext.babel import lazy_gettext as _
 from ordereddict import OrderedDict
 
+from learnpython import forms
 from learnpython.app import pages
-from learnpython.forms import ContactsForm, SubscribeForm
 
 
 def contacts(name=None):
+    """
+    Contacts form or subscribe page.
+
+    Add ability to send email with question about cources or subscribe to
+    lessons.
+    """
     messages = {
         'contacts': {
             'error': _('Cannot send message due to mail server problems. '
@@ -26,7 +41,7 @@ def contacts(name=None):
     }
     name = name or 'contacts'
 
-    form_klass = globals()[name.title() + 'Form']
+    form_klass = getattr(forms, name.title() + 'Form')
     page_obj = pages.get(name)
 
     if request.method == 'POST':
@@ -48,11 +63,23 @@ def contacts(name=None):
     return render_template('contacts.html', **context)
 
 
-def error(e):
-    return render_template('error.html', error=e), e.code
+def error(err):
+    """
+    Error page.
+
+    Prettify "Does Not Exist" and "Server Error" errors handling by displaying
+    fancy page.
+    """
+    code = getattr(err, 'code', 500)
+    return render_template('error.html', error=err), code
 
 
 def flows():
+    """
+    Flows page.
+
+    Show information of all available flows, which available in courses.
+    """
     data = filter(lambda item: item[0].startswith('flows/'),
                   pages._pages.items())
     data = map(lambda item: (item[0].replace('flows/', ''), item[1]), data)
@@ -61,11 +88,24 @@ def flows():
 
 
 def page(name):
+    """
+    Flat page.
+
+    Show content of flat page, which named ``name``. Content of flat page would
+    be rendered with ReStructuredText markup.
+
+    If page not found - show "Does Not Exist" error page.
+    """
     page_obj = pages.get_or_404(name)
     context = {'is_{0}'.format(name): True, 'page': page_obj}
     return render_template('page.html', **context)
 
 
 def status():
-    next = request.args.get('next', request.referrer or url_for('index'))
-    return render_template('status.html', next=next)
+    """
+    Status page.
+
+    Helper page, which displays after user sent message or has been subscribed.
+    """
+    next_page = request.args.get('next', request.referrer or url_for('index'))
+    return render_template('status.html', next=next_page)

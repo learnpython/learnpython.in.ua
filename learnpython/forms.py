@@ -1,9 +1,28 @@
+"""
+=================
+learnpython.forms
+=================
+
+Contacts and subscribe form for Learn Python site.
+
+All forms are built on top of ``Flask-WTF`` extension, all emails will send
+using ``Flask-Mail`` extension.
+
+Default recipient
+=================
+
+By default, all emails will sent to ``BaseContactsForm.default_recipient``
+email. To customize things, setup ``MAIL_RECIPIENTS`` setting with tuple or
+list of recipients.
+
+"""
+
 from flask import render_template
 from flask.ext import wtf
 from flask.ext.babel import lazy_gettext as _
 from flask.ext.mail import Message
 
-from learnpython.app import mail, pages
+from learnpython.app import app, mail, pages
 
 
 __all__ = ('ContactsForm', 'SubscribeForm')
@@ -16,7 +35,7 @@ FLOW_CHOICES = \
                key=lambda item: item[1]['order']))
 
 
-class Email(wtf.Email):
+class Email(wtf.Email, object):
     """
     Localize message for email validator.
     """
@@ -25,7 +44,7 @@ class Email(wtf.Email):
         super(Email, self).__init__(message)
 
 
-class Required(wtf.Required):
+class Required(wtf.Required, object):
     """
     Localize message for required validator.
     """
@@ -34,7 +53,7 @@ class Required(wtf.Required):
         super(Required, self).__init__(message)
 
 
-class BaseContactsForm(wtf.Form):
+class BaseContactsForm(wtf.Form, object):
     """
     Base contacts form.
 
@@ -44,11 +63,22 @@ class BaseContactsForm(wtf.Form):
     name = wtf.TextField(_('Name'), validators=[Required()])
     email = wtf.TextField(_('Email'), validators=[Required(), Email()])
 
-    recipients = ['we@learnpython.in.ua']
+    default_recipient = 'we@learnpython.in.ua'
     template = None
     title = None
 
+    @property
+    def recipients(self):
+        """
+        Read list of recipients from application config.
+        """
+        default = [self.default_recipient]
+        return app.config.get('MAIL_RECIPIENTS', default)
+
     def send(self):
+        """
+        Send email to all form recipients.
+        """
         assert self.title, 'Please, supply "title" attribute first.'
         assert self.template, 'Please, supply "template" attribute first.'
 
@@ -73,6 +103,9 @@ class ContactsForm(BaseContactsForm):
     title = _('Feedback')
 
     def send(self):
+        """
+        Use custom subject for email message if user filled in "Subject" field.
+        """
         self.title = self.data['subject'] or self.title
         super(ContactsForm, self).send()
 
