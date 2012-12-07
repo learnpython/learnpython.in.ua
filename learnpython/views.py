@@ -14,7 +14,7 @@ from flask.ext.babel import lazy_gettext as _
 from ordereddict import OrderedDict
 
 from learnpython import forms
-from learnpython.app import pages
+from learnpython.app import app, pages
 
 
 def contacts(name=None):
@@ -109,3 +109,14 @@ def status():
     """
     next_page = request.args.get('next', request.referrer or url_for('index'))
     return render_template('status.html', next=next_page)
+
+
+def subscribe():
+    """
+    Subscribe page.
+
+    Disable ability of new subscribers if ``ALLOW_SUBSCRIBERS`` is False.
+    """
+    if app.config['ALLOW_SUBSCRIBERS']:
+        return contacts('subscribe')
+    return page('nosubscribe')

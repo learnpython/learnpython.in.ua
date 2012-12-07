@@ -41,7 +41,8 @@ MAIL_PASSWORD = env('MAILGUN_SMTP_PASSWORD', '')
 # WTForms settings
 SECRET_KEY = env('SECRET_KEY', 'Z\xc7G\xaf\x15$\xc1O\x8d\xb0Bks\x9b\n\x9a')
 
-# Contacts form settings
+# Project-related settings
+ALLOW_SUBSCRIBERS = bool(int(env('ALLOW_SUBSCRIBERS', 1)))
 MAIL_RECIPIENTS = env('MAIL_RECIPIENTS', 'we@learnpython.in.ua').split(',')
 
 

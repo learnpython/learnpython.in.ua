@@ -44,11 +44,7 @@ views.add('/', 'page', defaults={'name': 'index'}, endpoint='index')
 views.add('/contacts', 'contacts', methods=('GET', 'POST'))
 views.add('/flows', 'flows')
 views.add('/status', 'status')
-views.add('/subscribe',
-          'contacts',
-          defaults={'name': 'subscribe'},
-          endpoint='subscribe',
-          methods=('GET', 'POST'))
+views.add('/subscribe', 'subscribe', methods=('GET', 'POST'))
 views.add_error(404, 'error')
 views.add_error(500, 'error')
 views.add_static('/favicon.ico', defaults={'filename': 'img/favicon.ico'})
