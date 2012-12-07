@@ -2,7 +2,7 @@
 learnpython.in.ua
 =================
 
-.. image:: https://secure.travis-ci.org/playpauseandstop/learnpython.in.ua.png
+.. image:: https://secure.travis-ci.org/learnpython/learnpython.in.ua.png
 
 Learn Python web-site.
 
