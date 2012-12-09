@@ -1,4 +1,4 @@
-.PHONY: bootstrap clean compilemessages distclean killselenium killserver manage messages pep8 pylint selenium server shell test test_selenium test_splinter test_unit test_windmill
+.PHONY: bootstrap clean compilemessages distclean killserver manage messages pep8 pylint server shell test test_selenium test_splinter test_unit test_windmill
 
 ENV ?= env
 PROJECT = learnpython
@@ -11,7 +11,6 @@ HOST ?= 0.0.0.0
 PORT ?= 4351
 
 SELENIUM_BROWSER ?= firefox
-SELENIUM_JAR ?= $(ENV)/bin/selenium-server-standalone-2.25.0.jar
 SELENIUM_HOST ?= 127.0.0.1
 SELENIUM_PORT ?= 4352
 SELENIUM_URL = http://$(SELENIUM_HOST):$(SELENIUM_PORT)
@@ -42,9 +41,6 @@ distclean: clean
 	rm -rf $(ENV)/
 	rm $(PROJECT)/settings_local.py
 
-killselenium:
-	kill `ps -o "pid,command" | grep "java -jar $(SELENIUM_JAR)" | grep -v grep | awk '{print $$1}'`
-
 killserver:
 	kill `ps -o "pid,command" | grep "python $(PROJECT)/manage.py runserver -t $(HOST) -p $(PORT)" | grep -v grep | awk '{print $$1}'`
 
@@ -63,9 +59,6 @@ pep8:
 
 pylint:
 	$(ENV)/bin/pylint $(PROJECT)/ --ignore=tests --disable=W0141,W0142
-
-selenium:
-	java -jar $(SELENIUM_JAR)
 
 server:
 	$(MANAGE) runserver -t $(HOST) -p $(PORT)
