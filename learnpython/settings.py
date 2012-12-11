@@ -15,7 +15,7 @@ import os
 
 
 DIRNAME = os.path.abspath(os.path.dirname(__file__))
-env = lambda key, value: os.environ.get(key, value)
+env = os.environ.get
 rel = lambda *parts: os.path.abspath(os.path.join(DIRNAME, *parts))
 
 # Debug settings
