@@ -17,6 +17,8 @@ list of recipients.
 
 """
 
+import operator
+
 from flask import render_template
 from flask.ext import wtf
 from flask.ext.babel import lazy_gettext as _
@@ -29,10 +31,9 @@ __all__ = ('ContactsForm', 'SubscribeForm')
 
 
 FLOW_CHOICES = \
-    map(lambda item: (item[0].replace('flows/', ''), item[1]['title']),
-        sorted(filter(lambda item: item[0].startswith('flows/'),
-                      pages._pages.items()),
-               key=lambda item: item[1]['order']))
+    map(lambda page: (page.path.replace('flows/', ''), page['title']),
+        sorted(filter(lambda page: page.path.startswith('flows/'), pages),
+               key=operator.itemgetter('order')))
 
 
 class Email(wtf.Email, object):
@@ -67,6 +68,15 @@ class BaseContactsForm(wtf.Form, object):
     template = None
     title = None
 
+    def get_title(self):
+        """
+        Prepend flow name for message title if possible or return default
+        message title from class attribute.
+        """
+        if 'flow' in self.data:
+            return u'{0}: {1}'.format(self.title, self.data['flow'])
+        return self.title
+
     @property
     def recipients(self):
         """
@@ -82,7 +92,8 @@ class BaseContactsForm(wtf.Form, object):
         assert self.title, 'Please, supply "title" attribute first.'
         assert self.template, 'Please, supply "template" attribute first.'
 
-        message = Message(u'[Learn Python] {0}'.format(self.title),
+        title = self.get_title()
+        message = Message(u'[Learn Python] {0}'.format(title),
                           sender=(self.data['name'], self.data['email']),
                           recipients=self.recipients)
         message.body = render_template(self.template, **self.data)
@@ -121,4 +132,4 @@ class SubscribeForm(BaseContactsForm):
     comments = wtf.TextField(_('Additional comments'), widget=wtf.TextArea())
 
     template = 'mails/subscribe.txt'
-    title = _('Subscribe')
+    title = _('Flow subscription')

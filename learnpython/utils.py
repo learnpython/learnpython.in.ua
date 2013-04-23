@@ -15,14 +15,16 @@ from jinja2.filters import do_mark_safe
 __all__ = ('restructuredtext_filter', )
 
 
-def restructuredtext_filter(text, result=None):
+def restructuredtext_filter(text, mixed=None):
     """
     Convert text to HTML using reStructuredText markup.
     """
     app = current_app
 
     docutils_settings = app.config.get('RESTRUCTUREDTEXT_FILTER_SETTINGS', {})
-    result = result or 'fragment'
+    result = (mixed
+              if mixed is not None and isinstance(mixed, basestring)
+              else 'fragment')
     writer_name = app.config.get('RESTRUCTUREDTEXT_WRITER_NAME', 'html4css1')
 
     parts = publish_parts(source=text,

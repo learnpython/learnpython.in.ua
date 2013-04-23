@@ -7,6 +7,7 @@ View functions for Learn Python web-site.
 
 """
 
+import operator
 import socket
 
 from flask import flash, render_template, redirect, request, url_for
@@ -74,17 +75,20 @@ def error(err):
     return render_template('error.html', error=err), code
 
 
-def flows():
+def flows(archive=None):
     """
     Flows page.
 
     Show information of all available flows, which available in courses.
     """
-    data = filter(lambda item: item[0].startswith('flows/'),
-                  pages._pages.items())
-    data = map(lambda item: (item[0].replace('flows/', ''), item[1]), data)
-    data.sort(key=lambda item: item[1]['order'])
-    return render_template('flows.html', flows=OrderedDict(data))
+    prefix = 'flows/' if not archive else 'archive/{0}'.format(archive)
+
+    data = sorted(filter(lambda page: page.path.startswith(prefix), pages),
+                  key=operator.itemgetter('order'))
+    data = map(lambda page: (page.path.replace(prefix, ''), page), data)
+
+    context = {'archive': archive, 'flows': OrderedDict(data)}
+    return render_template('flows.html', **context)
 
 
 def page(name):
