@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-23 10:59+0300\n"
+"POT-Creation-Date: 2013-04-23 16:21+0300\n"
 "PO-Revision-Date: 2012-10-23 10:59+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -18,62 +18,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: learnpython/forms.py:24
+#: learnpython/forms.py:44
 msgid "Invalid email address."
 msgstr "Введите правильный email."
 
-#: learnpython/forms.py:33
+#: learnpython/forms.py:53
 msgid "This field is required."
 msgstr "Обязательное поле."
 
-#: learnpython/forms.py:44
+#: learnpython/forms.py:64
 msgid "Name"
 msgstr "Имя"
 
-#: learnpython/forms.py:45
+#: learnpython/forms.py:65
 msgid "Email"
 msgstr "Email"
 
-#: learnpython/forms.py:67
+#: learnpython/forms.py:108
 msgid "Subject"
 msgstr "Тема"
 
-#: learnpython/forms.py:68
+#: learnpython/forms.py:110
 msgid "Message"
 msgstr "Сообщение"
 
-#: learnpython/forms.py:72
+#: learnpython/forms.py:114
 msgid "Feedback"
 msgstr "Обратная связь"
 
-#: learnpython/forms.py:83
+#: learnpython/forms.py:128
 msgid "Phone"
 msgstr "Телефон"
 
-#: learnpython/forms.py:84
+#: learnpython/forms.py:130
 msgid "Flow"
 msgstr "Поток"
 
-#: learnpython/forms.py:86
+#: learnpython/forms.py:132
 msgid "Additional comments"
 msgstr "Дополнительные комментарии"
 
-#: learnpython/forms.py:89 learnpython/templates/base.html:53
-#: learnpython/templates/base.html:68
-msgid "Subscribe"
-msgstr "Запись на курс"
+#: learnpython/forms.py:135
+msgid "Flow subscription"
+msgstr "Запись на поток"
 
-#: learnpython/views.py:14
+#: learnpython/views.py:30
 msgid "Cannot send message due to mail server problems. Please, try again later!"
 msgstr ""
 "Невозможно отправить сообщение из-за проблем с почтовым сервером. "
 "Пожалуйста, попробуйте еще раз позже!"
 
-#: learnpython/views.py:16
+#: learnpython/views.py:32
 msgid "Your message has been sent! Thanks for your feedback!"
 msgstr "Ваше сообщение успешно отправлено! Мы ответим вам в ближайшее время!"
 
-#: learnpython/views.py:20
+#: learnpython/views.py:36
 msgid ""
 "Cannot apply subscription due to mail server problems. Please, try again "
 "later!"
@@ -81,44 +80,55 @@ msgstr ""
 "Невозможно отправить подписку из-за проблем с почтовым сервером. "
 "Пожалуйста, попробуйте еще раз позже!"
 
-#: learnpython/views.py:22
+#: learnpython/views.py:38
 msgid ""
 "You successfully subscribed to Learn Python courses! We will send you all"
 " necessary information later!"
 msgstr ""
-"Вы успешно записались на курс Learn Python! В ближайшее время мы отправим"
-" всю необходимую информацию о сроках и цене курса на ваш электронный "
-"адрес!"
+"Вы успешно записались на курс Learn Python! После формирования групп мы "
+"отправим всю необходимую информацию о курсе на ваш электронный адрес!"
 
 #: learnpython/templates/base.html:4 learnpython/templates/base.html:31
 msgid "Learn Python in Kyiv, Ukraine"
 msgstr "Учим Python в Киеве"
 
-#: learnpython/templates/base.html:35 learnpython/templates/base.html:67
+#: learnpython/templates/base.html:35 learnpython/templates/base.html:74
 msgid "About us"
 msgstr "О нас"
 
-#: learnpython/templates/base.html:36 learnpython/templates/base.html:69
+#: learnpython/templates/base.html:36 learnpython/templates/base.html:76
+msgid "Flows archive"
+msgstr "Архив занятий"
+
+#: learnpython/templates/base.html:37 learnpython/templates/base.html:77
 msgid "Contacts"
 msgstr "Контакты"
 
-#: learnpython/templates/base.html:40
-msgid "2 flows on 12 studies"
-msgstr "2 потока по 12 занятий"
+#: learnpython/templates/base.html:41
+msgid "3 flows on 6 studies"
+msgstr "3 потока по 6 занятий"
 
-#: learnpython/templates/base.html:44
+#: learnpython/templates/base.html:48
 msgid "Fork us on GitHub"
 msgstr "Форкайте нас на GitHub"
 
-#: learnpython/templates/base.html:51 learnpython/templates/base.html:64
+#: learnpython/templates/base.html:55 learnpython/templates/base.html:70
+msgid "Async flow"
+msgstr "Async поток"
+
+#: learnpython/templates/base.html:56 learnpython/templates/base.html:71
 msgid "Web flow"
 msgstr "Web поток"
 
-#: learnpython/templates/base.html:52 learnpython/templates/base.html:65
-msgid "Advanced flow"
-msgstr "Advanced поток"
+#: learnpython/templates/base.html:57 learnpython/templates/base.html:72
+msgid "Optimization flow"
+msgstr "Оптимизация"
 
-#: learnpython/templates/base.html:62
+#: learnpython/templates/base.html:58 learnpython/templates/base.html:75
+msgid "Subscribe"
+msgstr "Запись на курс"
+
+#: learnpython/templates/base.html:68
 msgid "Learn Python"
 msgstr "Learn Python"
 
@@ -139,6 +149,10 @@ msgstr "Ошибка %(code)s"
 msgid "Click here to return to index page"
 msgstr "Нажмите здесь, для перехода на главную страницу"
 
+#: learnpython/templates/flows.html:10
+msgid "&lsaquo; Back to archive"
+msgstr "&lsaquo; К архиву занятий"
+
 #: learnpython/templates/status.html:10
 msgid "You will redirect to next page in 10 seconds"
 msgstr "Вы будете перенаправлены на следующую страницу через 10 секунд"
@@ -146,3 +160,4 @@ msgstr "Вы будете перенаправлены на следующую �
 #: learnpython/templates/status.html:11
 msgid "Click here, if you don't wanna wait"
 msgstr "Нажмите здесь, если вы не хотите ждать"
+

@@ -1,15 +1,15 @@
 # Translations template for learnpython.
-# Copyright (C) 2012 ORGANIZATION
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the learnpython
 # project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: learnpython VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-23 10:59+0300\n"
+"POT-Creation-Date: 2013-04-23 16:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,66 +18,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: learnpython/forms.py:24
+#: learnpython/forms.py:44
 msgid "Invalid email address."
 msgstr ""
 
-#: learnpython/forms.py:33
+#: learnpython/forms.py:53
 msgid "This field is required."
 msgstr ""
 
-#: learnpython/forms.py:44
+#: learnpython/forms.py:64
 msgid "Name"
 msgstr ""
 
-#: learnpython/forms.py:45
+#: learnpython/forms.py:65
 msgid "Email"
 msgstr ""
 
-#: learnpython/forms.py:67
+#: learnpython/forms.py:108
 msgid "Subject"
 msgstr ""
 
-#: learnpython/forms.py:68
+#: learnpython/forms.py:110
 msgid "Message"
 msgstr ""
 
-#: learnpython/forms.py:72
+#: learnpython/forms.py:114
 msgid "Feedback"
 msgstr ""
 
-#: learnpython/forms.py:83
+#: learnpython/forms.py:128
 msgid "Phone"
 msgstr ""
 
-#: learnpython/forms.py:84
+#: learnpython/forms.py:130
 msgid "Flow"
 msgstr ""
 
-#: learnpython/forms.py:86
+#: learnpython/forms.py:132
 msgid "Additional comments"
 msgstr ""
 
-#: learnpython/forms.py:89 learnpython/templates/base.html:53
-#: learnpython/templates/base.html:68
-msgid "Subscribe"
+#: learnpython/forms.py:135
+msgid "Flow subscription"
 msgstr ""
 
-#: learnpython/views.py:14
+#: learnpython/views.py:30
 msgid "Cannot send message due to mail server problems. Please, try again later!"
 msgstr ""
 
-#: learnpython/views.py:16
+#: learnpython/views.py:32
 msgid "Your message has been sent! Thanks for your feedback!"
 msgstr ""
 
-#: learnpython/views.py:20
+#: learnpython/views.py:36
 msgid ""
 "Cannot apply subscription due to mail server problems. Please, try again "
 "later!"
 msgstr ""
 
-#: learnpython/views.py:22
+#: learnpython/views.py:38
 msgid ""
 "You successfully subscribed to Learn Python courses! We will send you all"
 " necessary information later!"
@@ -87,31 +86,43 @@ msgstr ""
 msgid "Learn Python in Kyiv, Ukraine"
 msgstr ""
 
-#: learnpython/templates/base.html:35 learnpython/templates/base.html:67
+#: learnpython/templates/base.html:35 learnpython/templates/base.html:74
 msgid "About us"
 msgstr ""
 
-#: learnpython/templates/base.html:36 learnpython/templates/base.html:69
+#: learnpython/templates/base.html:36 learnpython/templates/base.html:76
+msgid "Flows archive"
+msgstr ""
+
+#: learnpython/templates/base.html:37 learnpython/templates/base.html:77
 msgid "Contacts"
 msgstr ""
 
-#: learnpython/templates/base.html:40
-msgid "2 flows on 12 studies"
+#: learnpython/templates/base.html:41
+msgid "3 flows on 6 studies"
 msgstr ""
 
-#: learnpython/templates/base.html:44
+#: learnpython/templates/base.html:48
 msgid "Fork us on GitHub"
 msgstr ""
 
-#: learnpython/templates/base.html:51 learnpython/templates/base.html:64
+#: learnpython/templates/base.html:55 learnpython/templates/base.html:70
+msgid "Async flow"
+msgstr ""
+
+#: learnpython/templates/base.html:56 learnpython/templates/base.html:71
 msgid "Web flow"
 msgstr ""
 
-#: learnpython/templates/base.html:52 learnpython/templates/base.html:65
-msgid "Advanced flow"
+#: learnpython/templates/base.html:57 learnpython/templates/base.html:72
+msgid "Optimization flow"
 msgstr ""
 
-#: learnpython/templates/base.html:62
+#: learnpython/templates/base.html:58 learnpython/templates/base.html:75
+msgid "Subscribe"
+msgstr ""
+
+#: learnpython/templates/base.html:68
 msgid "Learn Python"
 msgstr ""
 
@@ -130,6 +141,10 @@ msgstr ""
 
 #: learnpython/templates/error.html:5
 msgid "Click here to return to index page"
+msgstr ""
+
+#: learnpython/templates/flows.html:10
+msgid "&lsaquo; Back to archive"
 msgstr ""
 
 #: learnpython/templates/status.html:10
