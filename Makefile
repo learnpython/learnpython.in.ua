@@ -1,14 +1,28 @@
 .PHONY: bootstrap clean compilemessages distclean killserver manage messages pep8 pylint server shell test test_selenium test_splinter test_unit test_windmill
 
-ENV ?= env
 PROJECT = learnpython
-TRANSLATIONS_DIR = $(PROJECT)/translations
 
-PYTHON = $(ENV)/bin/python
-MANAGE = $(PYTHON) $(PROJECT)/manage.py
+ENV ?= env
+VENV = $(shell echo $(VIRTUAL_ENV))
+
+ifneq ($(VENV),)
+	BABEL = pybabel
+	PEP8 = pep8
+	PIP = pip
+	PYLINT = pylint
+	PYTHON = python
+else
+	BABEL = $(ENV)/bin/pybabel
+	PEP8 = $(ENV)/bin/pep8
+	PIP = $(ENV)/bin/pip
+	PYLINT = $(ENV)/bin/pylint
+	PYTHON = $(ENV)/bin/python
+endif
 
 HOST ?= 0.0.0.0
 PORT ?= 4351
+TEST_ARGS ?= -v
+TRANSLATIONS_DIR = $(PROJECT)/translations
 
 SELENIUM_BROWSER ?= firefox
 SELENIUM_HOST ?= 127.0.0.1
@@ -32,7 +46,7 @@ clean:
 	find . -name '*.pyc' -delete
 
 compilemessages:
-	$(ENV)/bin/pybabel compile -f -d $(TRANSLATIONS_DIR)
+	$(BABEL) compile -f -d $(TRANSLATIONS_DIR)
 
 deploy: pep8 test
 	git push heroku master
@@ -45,26 +59,26 @@ killserver:
 	kill `ps -o "pid,command" | grep "python $(PROJECT)/manage.py runserver -t $(HOST) -p $(PORT)" | grep -v grep | awk '{print $$1}'`
 
 manage:
-	$(MANAGE) $(COMMAND)
+	$(PYTHON) $(PROJECT)/manage.py $(COMMAND)
 
 messages:
 	[ ! -d $(TRANSLATIONS_DIR) ] && mkdir $(TRANSLATIONS_DIR) || :
 	$(ENV)/bin/pybabel extract -F babel.cfg -k lazy_gettext -o $(TRANSLATIONS_DIR)/messages.pot --project=$(PROJECT) .
 	[ ! -d $(TRANSLATIONS_DIR)/ru ] && \
-	$(ENV)/bin/pybabel init -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru || \
-	$(ENV)/bin/pybabel update -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru
+	$(BABEL) init -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru || \
+	$(BABEL) update -i $(TRANSLATIONS_DIR)/messages.pot -d $(TRANSLATIONS_DIR) -l ru
 
 pep8:
-	$(ENV)/bin/pep8 --count --statistics $(PROJECT)/
+	$(PEP8) --statistics $(PROJECT)/
 
 pylint:
-	$(ENV)/bin/pylint $(PROJECT)/ --ignore=tests --disable=W0141,W0142
+	$(PYLINT) $(PROJECT)/ --ignore=tests --disable=W0141,W0142
 
 server:
-	$(MANAGE) runserver -t $(HOST) -p $(PORT)
+	COMMAND="runserver -t $(HOST) -p $(PORT)" $(MAKE) manage
 
 shell:
-	$(MANAGE) shell
+	COMMAND=shell $(MAKE) manage
 
 test: test_selenium test_splinter test_unit
 
@@ -87,7 +101,7 @@ test_splinter: clean
 	sleep 2
 
 test_unit: clean
-	$(ENV)/bin/nosetests $(NOSE_ARGS) -e "test_(selenium|splinter|windmill).py" -v -w $(PROJECT)/
+	$(ENV)/bin/nosetests $(NOSE_ARGS) -e "test_(selenium|splinter|windmill).py" $(TEST_ARGS) -w $(PROJECT)/
 
 test_windmill: clean
 	HOST=$(WINDMILL_HOST) PORT=$(WINDMILL_PORT) $(MAKE) server &
@@ -97,3 +111,6 @@ test_windmill: clean
 
 	-HOST=$(WINDMILL_HOST) PORT=$(WINDMILL_PORT) $(MAKE) killserver
 	sleep 2
+
+update:
+	$(PIP) list -lo
