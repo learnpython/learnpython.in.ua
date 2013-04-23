@@ -97,7 +97,7 @@ nav ul {
 
 nav ul li {
     float: left;
-    width: 320px;
+    width: 240px;
 }
 
 nav ul li a {
@@ -148,6 +148,14 @@ article {
 
 article dl, article ol, article p, article pre, article ul {
     margin: 1em 0;
+}
+
+article dl dd {
+    padding-left: 2em;
+}
+
+article dl dt {
+    font-weight: bold;
 }
 
 article dl:first-child, article ol:first-child, article p:first-child,

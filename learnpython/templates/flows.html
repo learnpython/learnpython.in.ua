@@ -5,11 +5,19 @@
 {% endblock %}
 {% block content %}
 
+  {% if archive %}
+  <p class="back">
+    <a href="{{ url_for("page", name="archive") }}">{{ _("&lsaquo; Back to archive") }}</a>
+  </p>
+  {% endif %}
+
   <div class="tabs">
   {% for name, flow in flows.items() %}
-    <div class="{% if flow.active %}active {% endif %}tab" id="{{ name }}">
+    <div class="{% if archive or flow.active %}active {% endif %}tab" id="{{ name }}">
+      {% if archive %}<h2>{{ flow.title }}</h2>{% endif %}
       {{ flow.html }}
     </div>
+    {% if archive and not loop.last %}<hr>{% endif %}
   {% endfor %}
   </div>
 
