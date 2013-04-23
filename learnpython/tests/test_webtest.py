@@ -74,6 +74,9 @@ class TestViewsWithWebTest(TestCase):
     def test_about(self):
         self.check_page('about', self.about_url)
 
+    def test_archive(self):
+        self.check_page('archive', self.archive_url)
+
     def test_contacts(self):
         self.check_page('contacts', self.contacts_url)
 
@@ -130,13 +133,15 @@ class TestViewsWithWebTest(TestCase):
 
         result = (
             (self.about_url, 'About us'),
+            (self.archive_url, 'Flows archive'),
             (self.contacts_url, 'Contacts')
         )
         self.check_links(doc('header .left-wrapper p a'), result)
 
         result = (
+            (self.flows_url + '#async', 'Async flow'),
             (self.flows_url + '#web', 'Web flow'),
-            (self.flows_url + '#advanced', 'Advanced flow'),
+            (self.flows_url + '#optimization', 'Optimization flow'),
             (self.subscribe_url, u'Subscribe →'),
         )
         self.check_links(doc('nav a'), result)
@@ -179,4 +184,6 @@ class TestViewsWithWebTest(TestCase):
             {'name': TEST_NAME, 'email': TEST_EMAIL, 'phone': TEST_PHONE,
              'flow': flow, 'comments': TEST_COMMENTS}
         )
-        self.check_form_success(self.subscribe_url, collection, 'Subscribe')
+        self.check_form_success(self.subscribe_url,
+                                collection,
+                                'Flow subscription: {0}'.format(flow))

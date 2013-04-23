@@ -48,6 +48,9 @@ class TestViewsWithTwill(TestCase):
     def test_about(self):
         self.check_page('about', self.about_url)
 
+    def test_archive(self):
+        self.check_page('archive', self.archive_url)
+
     def test_contacts(self):
         self.check_page('contacts', self.contacts_url)
 
@@ -172,19 +175,25 @@ class TestViewsWithTwill(TestCase):
             if IS_PYTHON_26:
                 c.go(t.url(self.flows_url))
                 c.code(200)
+                c.find('Async flow')
                 c.find('Web flow')
-                c.find('Advanced flow')
+                c.find('Optimization flow')
 
-                c.find('<div class="active tab" id="web">')
-                c.find('<div class="tab" id="advanced">')
+                c.find('<div class="active tab" id="async">')
+                c.find('<div class="tab" id="web">')
+                c.find('<div class="tab" id="optimization">')
             else:
+                c.follow('Async flow')
+                c.code(200)
+                c.url(t.url(self.flows_url) + '#async$')
+
                 c.follow('Web flow')
                 c.code(200)
                 c.url(t.url(self.flows_url) + '#web$')
 
-                c.follow('Advanced flow')
+                c.follow('Optimization flow')
                 c.code(200)
-                c.url(t.url(self.flows_url) + '#advanced$')
+                c.url(t.url(self.flows_url) + '#optimization$')
 
             c.follow('Learn Python')
             c.code(200)
@@ -263,11 +272,13 @@ class TestViewsWithTwill(TestCase):
                 c.url(t.url(self.status_url))
 
                 self.assertEqual(len(outbox), 1)
-                args = (TEST_NAME, TEST_EMAIL, 'web')
-                self.check_message(outbox[0], 'Subscribe', *args)
+                args = (TEST_NAME, TEST_EMAIL, 'async')
+                self.check_message(outbox[0],
+                                   'Flow subscription: async',
+                                   *args)
 
             c.go(self.subscribe_url)
-            flow = choice(('web', 'advanced'))
+            flow = choice(('async', 'web', 'optimization'))
 
             c.fv(1, 'name', TEST_NAME)
             c.fv(1, 'email', TEST_EMAIL)
@@ -282,4 +293,6 @@ class TestViewsWithTwill(TestCase):
 
                 self.assertEqual(len(outbox), 1)
                 args = (TEST_NAME, TEST_EMAIL, TEST_PHONE, flow, TEST_COMMENTS)
-                self.check_message(outbox[0], 'Subscribe', *args)
+                self.check_message(outbox[0],
+                                   'Flow subscription: {0}'.format(flow),
+                                   *args)

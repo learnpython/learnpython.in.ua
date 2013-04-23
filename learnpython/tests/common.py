@@ -33,10 +33,12 @@ class TestCase(BaseTestCase):
     ALLOW_SUBSCRIBERS = True
     BABEL_DEFAULT_LOCALE = 'en'
     CSRF_ENABLED = False
+    MAIL_SUPRESS_SEND = True
     TESTING = True
 
     def setUp(self):
         self.about_url = self.url('page', name='about')
+        self.archive_url = self.url('page', name='archive')
         self.contacts_url = self.url('contacts')
         self.flows_url = self.url('flows')
         self.index_url = self.url('index')

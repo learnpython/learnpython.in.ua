@@ -51,6 +51,9 @@ class TestViewsWithFlaskTesting(TestCase):
     def test_about(self):
         self.check_page('about', self.about_url)
 
+    def test_archive(self):
+        self.check_page('archive', self.archive_url)
+
     def test_contacts(self):
         self.check_page('contacts', self.contacts_url)
 
@@ -72,21 +75,20 @@ class TestViewsWithFlaskTesting(TestCase):
         self.check_form_success(self.contacts_url, collection, 'Feedback')
 
     def test_flows(self):
-        flows = filter(lambda item: item[0].startswith('flows/'),
-                       pages._pages.items())
+        flows = filter(lambda page: page.path.startswith('flows/'), pages)
         response = self.client.get(self.flows_url)
         self.assert200(response)
 
-        for fullname, flow in flows:
-            name = fullname.replace('flows/', '')
+        for flow in flows:
+            name = flow.path.replace('flows/', '')
             self.assertIn('id="{0}"'.format(name), response.data)
 
     def test_index(self):
         self.check_page('index', self.index_url)
 
-        urls = (self.contacts_url, self.flows_url + '#web',
-                self.flows_url + '#advanced', self.subscribe_url,
-                self.index_url)
+        urls = (self.contacts_url, self.archive_url, self.flows_url + '#async',
+                self.flows_url + '#web', self.flows_url + '#optimization',
+                self.subscribe_url, self.index_url)
 
         response = self.client.get(self.index_url)
         self.assert200(response)
@@ -130,4 +132,6 @@ class TestViewsWithFlaskTesting(TestCase):
             {'name': TEST_NAME, 'email': TEST_EMAIL, 'phone': TEST_PHONE,
              'flow': flow, 'comments': TEST_COMMENTS}
         )
-        self.check_form_success(self.subscribe_url, collection, 'Subscribe')
+        self.check_form_success(self.subscribe_url,
+                                collection,
+                                'Flow subscription: {0}'.format(flow))
