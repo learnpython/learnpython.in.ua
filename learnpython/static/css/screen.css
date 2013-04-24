@@ -243,18 +243,13 @@ form .error-line, form p.error-line {
     margin: -0.5em 0;
 }
 
-form .error-line #name-error, form .error-line #email-error {
+form .error-line #name-error, form .error-line #email-error,
+form .error-line #phone-error, form .error-line #skype-error {
     display: inline-block;
     width: 437px;
 }
 
-form .error-line.three-in-a-row #name-error,
-form .error-line.three-in-a-row #email-error,
-form .error-line #phone-error {
-    width: 288px;
-}
-
-form #name, form #email {
+form #name, form #email, form #phone, form #skype {
     width: 425px;
 }
 

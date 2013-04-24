@@ -7,7 +7,7 @@ from twill.commands import config
 from learnpython.app import pages
 
 from .common import TEST_COMMENTS, TEST_EMAIL, TEST_MESSAGE, TEST_NAME, \
-    TEST_PHONE, TEST_SUBJECT, TestCase, Twill
+    TEST_PHONE, TEST_SKYPE, TEST_SUBJECT, TestCase, Twill
 
 
 IS_PYTHON_26 = sys.version_info[:2] == (2, 6)
@@ -283,6 +283,7 @@ class TestViewsWithTwill(TestCase):
             c.fv(1, 'name', TEST_NAME)
             c.fv(1, 'email', TEST_EMAIL)
             c.fv(1, 'phone', TEST_PHONE)
+            c.fv(1, 'skype', TEST_SKYPE)
             c.fv(1, 'flow', flow)
             c.fv(1, 'comments', TEST_COMMENTS)
 
@@ -292,7 +293,10 @@ class TestViewsWithTwill(TestCase):
                 c.url(t.url(self.status_url))
 
                 self.assertEqual(len(outbox), 1)
-                args = (TEST_NAME, TEST_EMAIL, TEST_PHONE, flow, TEST_COMMENTS)
+                args = (
+                    TEST_NAME, TEST_EMAIL, TEST_PHONE, TEST_SKYPE, flow,
+                    TEST_COMMENTS
+                )
                 self.check_message(outbox[0],
                                    'Flow subscription: {0}'.format(flow),
                                    *args)

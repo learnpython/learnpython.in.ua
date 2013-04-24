@@ -4,7 +4,7 @@ from learnpython.app import pages
 from learnpython.forms import FLOW_CHOICES
 
 from .common import TEST_COMMENTS, TEST_EMAIL, TEST_MESSAGE, TEST_NAME, \
-    TEST_PHONE, TEST_SUBJECT, TestCase
+    TEST_PHONE, TEST_SKYPE, TEST_SUBJECT, TestCase
 
 
 class TestViewsWithFlaskTesting(TestCase):
@@ -130,7 +130,7 @@ class TestViewsWithFlaskTesting(TestCase):
         collection = (
             {'name': TEST_NAME, 'email': TEST_EMAIL, 'flow': flow},
             {'name': TEST_NAME, 'email': TEST_EMAIL, 'phone': TEST_PHONE,
-             'flow': flow, 'comments': TEST_COMMENTS}
+             'skype': TEST_SKYPE, 'flow': flow, 'comments': TEST_COMMENTS}
         )
         self.check_form_success(self.subscribe_url,
                                 collection,

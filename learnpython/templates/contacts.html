@@ -36,16 +36,24 @@
       </p>
       {% endif %}
     {% elif is_subscribe %}
-      <p class="three-in-a-row">
-        {{ form.name(class_="required", placeholder="* " + form.name.label.text, size=27) }}
-        {{ form.email(class_="required", placeholder="* " + form.email.label.text, size=27) }}
-        {{ form.phone(placeholder=form.phone.label.text, size=27) }}
+      <p>
+        {{ form.name(class_="required", placeholder="* " + form.name.label.text, size=40) }}
+        {{ form.email(class_="required", placeholder="* " + form.email.label.text, size=40) }}
       </p>
-      {% if form.name.errors or form.email.errors or form.phone.errors %}
-      <p class="error error-line three-in-a-row">
+      {% if form.name.errors or form.email.errors %}
+      <p class="error error-line">
         <span id="name-error">{% if form.name.errors %}{{ form.name.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
         <span id="email-error">{% if form.email.errors %}{{ form.email.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+      </p>
+      {% endif %}
+      <p>
+        {{ form.phone(placeholder=form.phone.label.text, size=40) }}
+        {{ form.skype(placeholder=form.skype.label.text, size=40) }}
+      </p>
+      {% if form.phone.errors or form.skype.errors %}
+      <p class="error error-line">
         <span id="phone-error">{% if form.phone.errors %}{{ form.phone.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
+        <span id="skype-error">{% if form.skype.errors %}{{ form.skype.errors|join("<br>") }}{% else %}&nbsp;{% endif %}</span>
       </p>
       {% endif %}
       <p class="flow-wrapper">

@@ -7,6 +7,7 @@
 Имя: {{ name }}
 Электронный адрес: {{ email }}
 Телефон: {{ phone }}
+Skype: {{ skype }}
 Поток: {{ flow }}
 Комментарии:
 {{ comments|wordwrap }}

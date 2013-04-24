@@ -22,6 +22,7 @@ TEST_EMAIL = 'iam@igordavydenko.com'
 TEST_MESSAGE = 'Test message.'
 TEST_NAME = 'Igor Davydenko'
 TEST_PHONE = '+380 12 345-67-89'
+TEST_SKYPE = 'igor.davydenko'
 TEST_SUBJECT = 'Test subject'
 
 
