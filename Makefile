@@ -7,18 +7,21 @@ VENV = $(shell echo $(VIRTUAL_ENV))
 
 ifneq ($(VENV),)
 	BABEL = pybabel
+	NOSETESTS = nosetests
 	PEP8 = pep8
 	PIP = pip
 	PYLINT = pylint
 	PYTHON = python
 else
 	BABEL = $(ENV)/bin/pybabel
+	NOSETESTS = $(ENV)/bin/nosetests
 	PEP8 = $(ENV)/bin/pep8
 	PIP = $(ENV)/bin/pip
 	PYLINT = $(ENV)/bin/pylint
 	PYTHON = $(ENV)/bin/python
 endif
 
+COVERAGE_DIR = /tmp/$(PROJECT)-coverage
 HOST ?= 0.0.0.0
 PORT ?= 4351
 TEST_ARGS ?= -v
@@ -48,7 +51,7 @@ clean:
 compilemessages:
 	$(BABEL) compile -f -d $(TRANSLATIONS_DIR)
 
-deploy: pep8 test
+deploy: test
 	git push heroku master
 
 distclean: clean
@@ -82,32 +85,35 @@ shell:
 
 test: test_selenium test_splinter test_unit
 
-test_selenium: clean
+test_selenium: clean pep8
 	HOST=$(SELENIUM_HOST) PORT=$(SELENIUM_PORT) $(MAKE) server &
 	sleep 2
 
-	-SELENIUM_BROWSER=$(SELENIUM_BROWSER) SELENIUM_URL=$(SELENIUM_URL) $(ENV)/bin/nosetests $(NOSE_ARGS) -v $(PROJECT)/tests/test_selenium.py
+	-SELENIUM_BROWSER=$(SELENIUM_BROWSER) SELENIUM_URL=$(SELENIUM_URL) \
+	$(NOSETESTS) $(TEST_ARGS) $(PROJECT)/tests/test_selenium.py
 
 	-HOST=$(SELENIUM_HOST) PORT=$(SELENIUM_PORT) $(MAKE) killserver
 	sleep 2
 
-test_splinter: clean
+test_splinter: clean pep8
 	HOST=$(SPLINTER_HOST) PORT=$(SPLINTER_PORT) $(MAKE) server &
 	sleep 2
 
-	-SPLINTER_BROWSER=$(SPLINTER_BROWSER) SPLINTER_URL=$(SPLINTER_URL) $(ENV)/bin/nosetests $(NOSE_ARGS) -v $(PROJECT)/tests/test_splinter.py
+	-SPLINTER_BROWSER=$(SPLINTER_BROWSER) SPLINTER_URL=$(SPLINTER_URL) \
+	$(NOSETESTS) $(TEST_ARGS) $(PROJECT)/tests/test_splinter.py
 
 	-HOST=$(SPLINTER_HOST) PORT=$(SPLINTER_PORT) $(MAKE) killserver
 	sleep 2
 
-test_unit: clean
-	$(ENV)/bin/nosetests $(NOSE_ARGS) -e "test_(selenium|splinter|windmill).py" $(TEST_ARGS) -w $(PROJECT)/
+test_unit: clean pep8
+	$(NOSETESTS) $(TEST_ARGS) -e "test_(selenium|splinter|windmill).py" -w $(PROJECT)/ \
+	--with-coverage --cover-package=$(PROJECT) --cover-branches --cover-html --cover-html-dir=$(COVERAGE_DIR)
 
-test_windmill: clean
+test_windmill: clean pep8
 	HOST=$(WINDMILL_HOST) PORT=$(WINDMILL_PORT) $(MAKE) server &
 	sleep 2
 
-	-$(ENV)/bin/nosetests $(NOSE_ARGS) -v --wmbrowser=$(WINDMILL_BROWSER) --wmtesturl=$(WINDMILL_URL) $(PROJECT)/tests/test_windmill.py
+	-$(NOSETESTS) $(TEST_ARGS) --wmbrowser=$(WINDMILL_BROWSER) --wmtesturl=$(WINDMILL_URL) $(PROJECT)/tests/test_windmill.py
 
 	-HOST=$(WINDMILL_HOST) PORT=$(WINDMILL_PORT) $(MAKE) killserver
 	sleep 2

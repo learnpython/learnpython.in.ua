@@ -11,6 +11,7 @@ WTForms==1.0.3
 WebOb==1.2.3
 WebTest==2.0.5
 blinker==1.2
+coverage==3.6
 docutils==0.10
 gunicorn==0.17.2
 lxml==3.1.2

@@ -5,5 +5,8 @@ build/
 dist/
 env/
 ve/
+venv/
+
+.coverage
 
 settings_local.py
